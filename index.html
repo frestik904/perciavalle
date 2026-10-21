@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Studio · Pedagogia della disabilità intellettiva · TFA sostegno UniCT</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎓%3C/text%3E%3C/svg%3E">
+<style>:root{--bg:#f4f5fb;--card:#fff;--ink:#1d2140;--muted:#6b7090;--line:#e6e8f2;--pri:#5b5fe0;--pri2:#c2389e;--ok:#1fa971;--ko:#e5484d;--warn:#f08a24;--rad:18px;--sh:0 6px 24px rgba(40,44,90,.08)}
+*{box-sizing:border-box}html,body{margin:0;height:100%}
+body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;-webkit-font-smoothing:antialiased}
+button{font:inherit;cursor:pointer;border:0}
+.app{display:flex;min-height:100vh;background:linear-gradient(90deg,#2a2862 248px,transparent 248px)}
+.nav .sh{display:none}
+.side{width:248px;flex:0 0 248px;background:linear-gradient(170deg,#24275a 0%,#3b2f7a 55%,#6a2b78 100%);color:#fff;padding:22px 16px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:6px}
+.brand{display:flex;gap:10px;align-items:center;margin:0 6px 18px}
+.logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#ffb84d,#ff5f8f);display:grid;place-items:center;font-weight:800;font-size:20px;box-shadow:0 4px 14px rgba(255,95,143,.4)}
+.brand b{display:block;font-size:14.5px;line-height:1.2}.brand small{opacity:.7;font-size:11.5px}
+.nav{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:12px;background:transparent;color:#dfe0ff;text-align:left;font-size:15px;transition:.15s}
+.nav:hover{background:rgba(255,255,255,.08);color:#fff}.nav.on{background:rgba(255,255,255,.16);color:#fff;font-weight:600}
+.nav .ic{width:22px;text-align:center;font-size:17px}
+.side .foot{margin-top:auto;font-size:11.5px;opacity:.65;padding:0 8px}
+main{flex:1;min-width:0;padding:28px 34px 60px;max-width:1180px}
+h1{font-size:28px;margin:0 0 4px;letter-spacing:-.02em}h2{font-size:20px;margin:0 0 12px}
+.sub{color:var(--muted);margin:0 0 22px}
+.card{background:var(--card);border-radius:var(--rad);box-shadow:var(--sh);padding:22px}
+.grid{display:grid;gap:18px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.hero{background:linear-gradient(120deg,#5b5fe0 0%,#8e44ad 50%,#e85d75 100%);color:#fff;border-radius:24px;padding:28px 30px;display:flex;gap:28px;align-items:center;flex-wrap:wrap;box-shadow:0 14px 40px rgba(91,95,224,.35);position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.08)}
+.hero h1{font-size:26px}.hero p{margin:4px 0 0;opacity:.9}
+.cd{display:flex;gap:10px;margin-top:14px}.cd div{background:rgba(255,255,255,.17);border-radius:14px;padding:10px 12px;min-width:68px;text-align:center;backdrop-filter:blur(4px)}
+.cd b{display:block;font-size:28px;line-height:1;font-variant-numeric:tabular-nums}.cd span{font-size:11.5px;opacity:.85;text-transform:uppercase;letter-spacing:.06em}
+.ring{position:relative;width:132px;height:132px;flex:0 0 132px;z-index:1}.ring svg{transform:rotate(-90deg)}.ring .v{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font-weight:800;font-size:26px}.ring .v small{display:block;font-size:11px;font-weight:500;opacity:.85}
+.btn{background:var(--pri);color:#fff;padding:11px 18px;border-radius:12px;font-weight:600;transition:.15s;display:inline-flex;align-items:center;gap:8px}
+.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}.btn.alt{background:#eef0ff;color:var(--pri)}.btn.w{background:#fff;color:#5b3fb0}.btn.big{padding:14px 22px;font-size:16px}
+.btn.ok{background:var(--ok)}.btn.ko{background:var(--ko)}.btn:disabled{opacity:.45;cursor:default;transform:none}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.tcard{border-radius:16px;padding:16px;background:#fff;box-shadow:var(--sh);border-left:6px solid var(--c);cursor:pointer;transition:.15s}
+.tcard:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(40,44,90,.13)}
+.tcard h3{margin:0 0 10px;font-size:14.5px;line-height:1.3;min-height:38px}
+.bar{height:8px;border-radius:8px;background:#eceef6;overflow:hidden}.bar i{display:block;height:100%;border-radius:8px;background:var(--c,var(--pri));transition:width .5s}
+.meta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);margin-top:7px}
+.src{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--c)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 16px}
+.chip{padding:7px 12px;border-radius:999px;background:#fff;border:1.5px solid var(--line);font-size:13px;color:var(--ink);display:inline-flex;gap:7px;align-items:center}
+.chip:before{content:"";width:9px;height:9px;border-radius:50%;background:var(--c,#999)}
+.chip.on{background:var(--c,var(--pri));border-color:var(--c,var(--pri));color:#fff}.chip.on:before{background:#fff}
+.chip.plain:before{display:none}
+.qbox{max-width:820px}
+.qtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:13.5px;color:var(--muted)}
+.qtext{font-size:20px;font-weight:650;margin:6px 0 18px;line-height:1.35}
+.opt{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;background:#fff;border:2px solid var(--line);border-radius:14px;padding:13px 15px;margin-bottom:10px;font-size:15.5px;color:var(--ink);transition:.12s}
+.opt:hover:not(:disabled){border-color:var(--pri);background:#f7f7ff}
+.opt .k{flex:0 0 28px;height:28px;border-radius:8px;background:#eef0ff;color:var(--pri);display:grid;place-items:center;font-weight:700;font-size:13px}
+.opt.right{border-color:var(--ok);background:#e9f8f1}.opt.right .k{background:var(--ok);color:#fff}
+.opt.wrong{border-color:var(--ko);background:#fdeced}.opt.wrong .k{background:var(--ko);color:#fff}
+.opt:disabled{cursor:default}
+.fb{border-radius:14px;padding:14px 16px;margin:6px 0 14px;animation:pop .25s}
+.fb.ok{background:#e9f8f1;border:1px solid #bfe9d5}.fb.ko{background:#fdeced;border:1px solid #f6c6c8}
+.ref{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;background:#eef0ff;color:#3f43b5;padding:4px 10px;border-radius:999px;margin-top:8px;font-weight:600}
+.approf{display:inline-block;font-size:11.5px;font-weight:700;background:#fff1e0;color:#b45a00;border:1px solid #ffd3a1;padding:3px 9px;border-radius:999px}
+.tag{display:inline-block;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;color:#fff;background:var(--c)}
+@keyframes pop{from{transform:scale(.97);opacity:0}to{transform:none;opacity:1}}
+.prog{height:6px;background:#e6e8f2;border-radius:6px;overflow:hidden;margin-bottom:16px}.prog i{display:block;height:100%;background:linear-gradient(90deg,#5b5fe0,#c2389e);transition:width .3s}
+/* flashcards */
+.fcwrap{perspective:1400px;max-width:640px;margin:0 auto}
+.fc{position:relative;height:330px;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.3,.7,.3,1);cursor:pointer}
+.fc.flip{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:22px;padding:28px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;box-shadow:0 14px 40px rgba(40,44,90,.15)}
+.face.front{background:linear-gradient(140deg,var(--c) 0%,#3b2f7a 140%);color:#fff}
+.face.front .t{font-size:24px;font-weight:700;line-height:1.3}
+.face.back{background:#fff;transform:rotateY(180deg);font-size:17px}
+.face .hint{position:absolute;bottom:14px;font-size:12px;opacity:.7}
+.face .top{position:absolute;top:14px;left:18px;right:18px;display:flex;justify-content:space-between;font-size:12px}
+.boxes{display:flex;gap:4px}.boxes i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.35)}.boxes i.f{background:#fff}
+.back .boxes i{background:#e3e5f0}.back .boxes i.f{background:var(--c)}
+.fcbtns{display:flex;justify-content:center;gap:14px;margin-top:22px}
+/* timeline */
+.tl{position:relative;margin:10px 0 0;padding:6px 0}
+.tl:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:4px;margin-left:-2px;background:linear-gradient(#5b5fe0,#c2389e,#f08a24);border-radius:4px}
+.ev{position:relative;width:50%;padding:8px 34px 8px 0;cursor:pointer}
+.ev:nth-child(even){margin-left:50%;padding:8px 0 8px 34px}
+.ev .dot{position:absolute;right:-11px;top:22px;width:22px;height:22px;border-radius:50%;background:#fff;border:5px solid var(--c);z-index:1;transition:.2s}
+.ev:nth-child(even) .dot{left:-11px;right:auto}
+.ev .in{background:#fff;border-radius:16px;padding:14px 16px;box-shadow:var(--sh);border-top:4px solid var(--c);transition:.2s}
+.ev:hover .in{transform:translateY(-2px)}
+.ev .yr{font-weight:800;font-size:22px;color:var(--c)}.ev .ti{font-weight:650}
+.ev .det{display:none;margin-top:8px;font-size:14.5px;color:#3a3f60}
+.ev.open .det{display:block;animation:pop .2s}.ev.open .dot{transform:scale(1.25)}
+/* maps */
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.mthumb{background:#fff;border-radius:16px;overflow:hidden;box-shadow:var(--sh);cursor:zoom-in;transition:.15s;text-align:left;padding:0;color:var(--ink)}
+.mthumb:hover{transform:translateY(-3px)}
+.mthumb img{width:100%;aspect-ratio:1.414;object-fit:cover;display:block;border-bottom:1px solid var(--line)}
+.mthumb div{padding:10px 12px;font-size:13.5px;font-weight:600}.mthumb small{color:var(--muted);font-weight:500;display:block}
+.lb{position:fixed;inset:0;background:#0e0f23;z-index:50;display:none;flex-direction:column}
+.lb.on{display:flex}
+.lbbar{background:#14152e;display:flex;align-items:center;gap:8px;padding:10px 14px;color:#fff}
+.lbbar .t{flex:1;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lbbar button{background:rgba(255,255,255,.13);color:#fff;border-radius:10px;min-width:40px;height:40px;font-size:18px;padding:0 10px}
+.lbbar button:hover{background:rgba(255,255,255,.25)}
+.lbview{flex:1;overflow:hidden;position:relative;cursor:grab;touch-action:none}
+.lbview.drag{cursor:grabbing}
+.lbview img{position:absolute;left:0;top:0;transform-origin:0 0;user-select:none;-webkit-user-drag:none;max-width:none}
+/* oral */
+.oral{max-width:860px}
+.oq{font-size:23px;font-weight:700;line-height:1.35;margin:10px 0 18px}
+.timer{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.tclock{position:relative;width:120px;height:120px}.tclock svg{transform:rotate(-90deg)}
+.tclock .v{position:absolute;inset:0;display:grid;place-items:center;font-size:26px;font-weight:800;font-variant-numeric:tabular-nums}
+.tclock.end .v{color:var(--ko)}
+.model{background:#f6f7ff;border:1px solid #dfe1fb;border-radius:16px;padding:16px 18px;margin-top:16px;animation:pop .25s;font-size:16px}
+.rate{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.rate button{width:52px;height:52px;border-radius:14px;background:#fff;border:2px solid var(--line);font-size:18px;font-weight:700;color:var(--ink)}
+.rate button:hover{border-color:var(--pri)}.rate button.on{background:var(--pri);color:#fff;border-color:var(--pri)}
+/* stats */
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.kpi b{display:block;font-size:30px;line-height:1.1;background:linear-gradient(90deg,#5b5fe0,#c2389e);-webkit-background-clip:text;background-clip:text;color:transparent}
+.kpi span{color:var(--muted);font-size:13px}
+.weak{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px dashed var(--line)}
+.note{font-size:13px;color:var(--muted)}
+.hide{display:none!important}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#24275a;color:#fff;padding:10px 18px;border-radius:12px;z-index:60;font-size:14px;animation:pop .2s}
+select{font:inherit;padding:8px 10px;border-radius:10px;border:1.5px solid var(--line);background:#fff}
+@media (max-width:980px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){
+ .app{flex-direction:column;background:none}
+ .nav .lg{display:none}.nav .sh{display:inline}
+ .side{position:fixed;bottom:0;top:auto;left:0;right:0;width:auto;height:auto;flex-direction:row;padding:6px;z-index:40;gap:2px;justify-content:space-around;border-radius:18px 18px 0 0}
+ .brand,.side .foot{display:none}
+ .nav{flex-direction:column;gap:2px;padding:6px 4px;font-size:10.5px;flex:1;text-align:center}
+ .nav .ic{font-size:19px}
+ main{padding:18px 14px 96px}
+ .g2,.g3{grid-template-columns:1fr}.g4{grid-template-columns:1fr 1fr;gap:12px}.kpi b{font-size:24px}
+ .hero{padding:22px}.cd div{min-width:58px}.cd b{font-size:22px}
+ .tl:before{left:14px}.ev,.ev:nth-child(even){width:100%;margin-left:0;padding:8px 0 8px 38px}
+ .ev .dot,.ev:nth-child(even) .dot{left:3px;right:auto}
+ .chips{flex-wrap:nowrap;overflow-x:auto;margin:4px -14px 14px;padding:2px 14px 6px;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}.chip{white-space:nowrap;flex:0 0 auto}
+ .kbd{display:none}.sub{font-size:14px;margin-bottom:12px}
+ .lbbar{flex-wrap:wrap;gap:6px;padding:8px}.lbbar .t{flex-basis:100%;order:-1;font-size:14px}.lbbar button{flex:1}
+ .qtext{font-size:18px}.fc{height:360px}.oq{font-size:19px}
+}
+</style></head><body>
+<div class="app">
+<nav class="side">
+ <div class="brand"><div class="logo">P</div><div><b>Pedagogia della disabilità intellettiva</b><small>TFA sostegno UniCT</small></div></div>
+ <button class="nav" data-v="home"><span class="ic">🏠</span><span class="lg">Home</span><span class="sh">Home</span></button>
+ <button class="nav" data-v="quiz"><span class="ic">✅</span><span class="lg">Quiz</span><span class="sh">Quiz</span></button>
+ <button class="nav" data-v="flash"><span class="ic">🃏</span><span class="lg">Flashcard</span><span class="sh">Card</span></button>
+ <button class="nav" data-v="timeline"><span class="ic">🕰️</span><span class="lg">Timeline</span><span class="sh">Tempo</span></button>
+ <button class="nav" data-v="mappe"><span class="ic">🗺️</span><span class="lg">Mappe</span><span class="sh">Mappe</span></button>
+ <button class="nav" data-v="orale"><span class="ic">🎤</span><span class="lg">Orale</span><span class="sh">Orale</span></button>
+ <button class="nav" data-v="stats"><span class="ic">📊</span><span class="lg">Statistiche</span><span class="sh">Stats</span></button>
+ <div class="foot">Prof.ssa Valentina Perciavalle<br>Contenuti tratti dalle slide del corso · funziona offline</div>
+</nav>
+<main id="main"></main>
+</div>
+<div class="lb" id="lb"><div class="lbbar"><button id="lbprev" title="Precedente">‹</button><div class="t" id="lbt"></div><button id="lbout" title="Riduci">−</button><button id="lbfit" title="Adatta">⤢</button><button id="lbin" title="Ingrandisci">+</button><button id="lbnext" title="Successiva">›</button><button id="lbx" title="Chiudi">✕</button></div><div class="lbview" id="lbview"><img id="lbimg" alt="Mappa concettuale"></div></div>
+<script>
+const TOPICS=[
+ {id:"ling",short:"Linguaggio",name:"Linguaggio (Gelati)",color:"#e85d75",src:"C"},
+ {id:"oms",short:"Modelli OMS",name:"Modelli OMS: ICD → ICF-CY",color:"#f08a24",src:"C"},
+ {id:"storia",short:"Fasi e leggi",name:"Fasi storiche e leggi 118/71 · 517/77 · 104/92 · 18/2009",color:"#d4a017",src:"C"},
+ {id:"bes",short:"DPR 1994 · BES",name:"DPR 1994 e BES",color:"#8bb22a",src:"C"},
+ {id:"d66",short:"D.Lgs. 66/2017",name:"D.Lgs. 66/2017 e GIT/GLI/GLO",color:"#2aa876",src:"C"},
+ {id:"d96",short:"D.Lgs. 96/2019",name:"D.Lgs. 96/2019",color:"#17a2b8",src:"C"},
+ {id:"di182",short:"D.I. 182/2020",name:"D.I. 182/2020",color:"#2f80ed",src:"C"},
+ {id:"d62",short:"D.Lgs. 62/2024",name:"D.Lgs. 62/2024 e Progetto di vita",color:"#5b5fe0",src:"C"},
+ {id:"pf",short:"PF · ICF · 4 dim.",name:"PF, ICF e 4 dimensioni del PEI",color:"#8e44ad",src:"P"},
+ {id:"quadri",short:"Quadri PEI",name:"Quadri del PEI e percorsi A/B/C",color:"#c2389e",src:"P"},
+ {id:"oltre",short:"Oltre il Q12",name:"Oltre il Quadro 12: Matrice e Budget",color:"#d6336c",src:"P"},
+ {id:"uda",short:"Format UDA",name:"Format UDA",color:"#6c757d",src:"U"}
+];
+// Quiz: [topic, domanda, risposta corretta, [errate], spiegazione, riferimento, approfondimento?]
+const C=n=>"Cornice storico-normativa, slide "+n, P=n=>"PEI, slide "+n, U=n=>"Format UDA, slide "+n;
+const QUIZ=[
+["ling","Secondo la riflessione di Maura Gelati, termini come «idiota» e «deficiente», nel momento in cui furono ideati…","avevano tutt’altro significato rispetto all’offesa che percepiamo oggi",["erano già usati come insulti nel linguaggio comune","erano termini introdotti dalla L. 104/92","erano sigle delle classificazioni OMS"],"Le slide spiegano che questi termini, che oggi suonano come offese, quando furono ideati erano usati da studiosi con un significato diverso.",C(2)],
+["ling","Dove compare il termine «idiota» secondo le slide?","Nel titolo di un volume di Séguin",["In un’opera di De Sanctis","Nella L. 104/1992","Nella classificazione ICIDH"],"«Idiota compare nel titolo di un volume di Séguin».",C(2)],
+["ling","Con «idiota» Séguin indicava…","un individuo che si isola al punto di non comunicare e richiede un trattamento educativo speciale",["una persona con disabilità motoria","un alunno con svantaggio socio-culturale","chi ha difficoltà di integrazione lavorativa"],"Per Séguin è chi, incapace di rompere la barriera che lo separa dal mondo, richiede un trattamento educativo speciale.",C(2)],
+["ling","Chi usa il termine «deficienti» nel titolo di una delle sue opere, riferendosi a soggetti con disabilità intellettiva?","De Sanctis",["Séguin","Maura Gelati","Paulo Freire"],"«Deficienti: De Sanctis lo usa nel titolo di una delle sue opere più interessanti».",C(2)],
+["ling","Il termine «handicappato» è l’elemento chiave di quale norma?","L. 5 febbraio 1992, n. 104",["L. 517/1977","L. 118/1971","D.Lgs. 66/2017"],"La legge-quadro 104/92 per l’assistenza, l’integrazione sociale e i diritti delle persone handicappate.",C(3)],
+["ling","Secondo la L. 104/92 (come riportata nelle slide) è «handicappato» chi presenta una minorazione fisica, psichica o sensoriale, stabilizzata o progressiva, che…","è causa di difficoltà di apprendimento, di relazione o integrazione lavorativa, tale da determinare svantaggio ed emarginazione",["impedisce qualsiasi attività scolastica","deriva esclusivamente da cause genetiche","è stata accertata dall’INPS"],"Definizione della slide (che per refuso scrive «minoranza» invece di «minorazione»).",C(3)],
+["ling","Perché le slide criticano l’espressione «diversamente abile»?","Perché considera (ipocritamente) la disabilità come una ricchezza per l’individuo",["Perché è un termine solo medico","Perché è stata vietata dalla L. 118/71","Perché descrive la disabilità come fragilità"],"«Diversamente abile» nasce per considerare la disabilità una ricchezza: secondo la slide è evidente che non può considerarsi tale.",C(4)],
+["ling","Perché «persona con disabilità» è la definizione corretta?","Perché intende la disabilità come una caratteristica della persona: né un valore aggiunto, né una fragilità",["Perché è la traduzione di «handicap»","Perché sottolinea il deficit","Perché è prevista dalla L. 517/77"],"La disabilità è una caratteristica della persona: né un valore aggiunto, né una fragilità.",C(4)],
+
+["oms","Secondo le slide, in che anno l’OMS ha elaborato l’ICD?","1970",["1980","1999","2001"],"Le slide indicano l’ICD nel 1970 (la storia della classificazione è in realtà più lunga: vedi approfondimento nei riassunti).",C(5)],
+["oms","L’ICIDH risale al…","1980, ed è rimasto in uso fino al 1999",["1970, in uso fino al 2001","1999, in uso fino al 2007","2001, ancora in uso"],"ICIDH nel 1980 e in uso fino al 1999.",C(5)],
+["oms","In che anno è stato elaborato l’ICF?","2001",["1999","2007","1980"],"ICF (International Classification of Functioning, Disability and Health) nel 2001.",C(5)],
+["oms","L’ICD è giunto alla sua…","undicesima edizione (ICD-11)",["decima edizione (ICD-10)","nona edizione (ICD-9)","seconda edizione (ICD-2)"],"«È giunta alla sua undicesima edizione (ICD-11)».",C(6)],
+["oms","L’ICD rappresenta un importante strumento per…","indagini statistiche e studi epidemiologici",["la redazione del PEI","l’individuazione dei facilitatori","la certificazione delle competenze"],"È la Classificazione delle malattie: strumento statistico ed epidemiologico.",C(6)],
+["oms","Qual era la sequenza dell’ICIDH?","Menomazione → Disabilità → Handicap",["Handicap → Disabilità → Menomazione","Disabilità → Menomazione → Handicap","Barriera → Facilitatore → Performance"],"La sequenza poneva la menomazione come causa della disabilità.",C(7)],
+["oms","Nell’ICIDH la «menomazione» è…","qualsiasi perdita, o atipicità, di strutture o funzioni psicologiche, fisiologiche o anatomiche",["la limitazione nel compiere un’attività","lo svantaggio sociale","una barriera ambientale"],"Definizione della slide sull’ICIDH.",C(7)],
+["oms","Nell’ICIDH la «disabilità» è…","l’effetto della menomazione: limitazione o perdita della capacità di compiere un’attività secondo parametri «normali»",["la perdita di strutture anatomiche","l’interazione tra persona e contesto","un fattore personale non codificato"],"Disabilità = gli effetti della menomazione.",C(7)],
+["oms","Qual era il limite principale dell’ICIDH?","Poneva la menomazione come causa della disabilità e leggeva la persona come vincolata ai suoi limiti, impossibilitata a partecipare",["Non classificava le malattie","Era riservato ai minori di 18 anni","Considerava solo i fattori ambientali"],"Impostazione medica: la persona era vista come impossibilitata a partecipare e contribuire alla vita sociale.",C(7)],
+["oms","L’ICIDH-2 (1999) ha rappresentato…","il trampolino di lancio del successivo modello ICF",["la versione per bambini dell’ICF","l’ultima edizione dell’ICD","il modello adottato dalla L. 517/77"],"Prospettava l’integrazione dei dati eziologici con l’analisi dell’impatto del deficit sull’individuo e sul contesto.",C(8)],
+["oms","Che cosa prospettava l’ICIDH-2?","Che i dati eziologici fossero integrati con l’analisi dell’impatto del deficit sull’individuo e sul contesto ambientale",["L’abolizione delle classificazioni","L’uso dei soli dati eziologici","Il passaggio dei dati all’INPS"],"È il ponte verso la visione bio-psico-sociale.",C(8)],
+["oms","Quale visione della disabilità fornisce l’ICF?","Bio-psico-sociale",["Esclusivamente medica","Assistenzialistica","Statistico-epidemiologica"],"«Ha fornito una visione bio-psico-sociale della disabilità».",C(9)],
+["oms","I tre ambiti cui l’ICF riferisce lo stato di salute sono…","dotazione biologica, fattori contestuali esterni, dimensione psicologica",["diagnosi, terapia, prognosi","menomazione, disabilità, handicap","scuola, famiglia, ASL"],"Dotazione biologica; fattori contestuali (relazioni, culture, ambienti); dimensione psicologica (autostima, identità, motivazione, autodeterminazione).",C(9)],
+["oms","Autostima, identità, motivazione e autodeterminazione appartengono, nell’ICF, a…","la dimensione psicologica",["la dotazione biologica","i fattori contestuali esterni","le strutture corporee"],"Sono gli esempi della dimensione psicologica indicati nella slide.",C(9)],
+["oms","Secondo le slide, l’ICF è indispensabile per individuare…","le barriere da rimuovere e i facilitatori da promuovere, per il massimo dell’auto-realizzazione",["le cause di morte","le ore di sostegno da assegnare","il percorso A, B o C"],"Barriere da rimuovere, facilitatori da promuovere, massimo dell’auto-realizzazione.",C(10)],
+["oms","L’ICF-CY riguarda la popolazione…","dalla nascita al diciottesimo anno di vita",["dai 6 ai 14 anni","dai 18 anni in poi","solo la scuola dell’infanzia"],"È la prima classificazione derivata dall’ICF per Children and Youth.",C(11)],
+["oms","Dove e quando l’OMS ha presentato per la prima volta la versione definitiva dell’ICF-CY?","A Venezia nel 2007",["A Ginevra nel 2001","A Roma nel 1999","A Venezia nel 2001"],"«Presentata per la prima volta dall’OMS a Venezia nel 2007».",C(11)],
+["oms","Che cosa considera in particolare l’ICF-CY?","I cambiamenti associati a crescita e sviluppo e le diverse conseguenze, per incidenza e intensità, rispetto agli adulti",["Solo le cause di morte infantili","Le malattie professionali","Il percorso scolastico differenziato"],"Infanzia, pubertà e adolescenza rispetto all’età adulta.",C(11)],
+["oms","Nell’ICIDH, l’«handicap» (definizione non riportata nelle slide) indica…","la condizione di svantaggio sociale conseguente a una menomazione o a una disabilità",["la perdita di una struttura anatomica","un facilitatore ambientale","il codice d dell’ICF"],"La slide non riporta la definizione del terzo termine: è un approfondimento dei riassunti.",C(7),1],
+
+["storia","Pre-anni ’60, secondo la sintesi normativa, si passa…","dall’esclusione alla medicalizzazione",["dalla medicalizzazione all’inserimento selvaggio","dall’integrazione all’inclusione","dall’inserimento selvaggio all’integrazione"],"Prima fase della sintesi normativa.",C(13)],
+["storia","Anni ’60/’75:","dalla medicalizzazione all’inserimento selvaggio",["dall’esclusione alla medicalizzazione","dall’inserimento selvaggio all’integrazione","dall’integrazione all’inclusione"],"Seconda fase.",C(13)],
+["storia","Anni ’70/’90:","dall’inserimento selvaggio all’integrazione",["dall’integrazione all’inclusione","dall’esclusione alla medicalizzazione","dalla medicalizzazione all’inserimento selvaggio"],"Terza fase.",C(13)],
+["storia","Post anni ’90:","dall’integrazione all’inclusione",["dall’inserimento selvaggio all’integrazione","dall’esclusione all’inserimento","dalla medicalizzazione all’integrazione"],"Quarta fase.",C(13)],
+["storia","L’INSERIMENTO è stato ufficializzato da…","l’art. 28 della Legge 118/1971",["la Legge 517/1977","la Legge 104/1992","il D.Lgs. 66/2017"],"Art. 28 L. 118/1971 (conversione del D.L. 30 gennaio 1971 n. 5, norme per mutilati e invalidi civili).",C(14)],
+["storia","La L. 118/1971 è la conversione in legge del decreto-legge 30 gennaio 1971 n. 5 e contiene…","nuove norme in favore dei mutilati ed invalidi civili",["norme sulla valutazione degli alunni","la ratifica della Convenzione ONU","le Linee guida per il PEI"],"Titolo riportato in slide.",C(14)],
+["storia","L’INTEGRAZIONE è legata a…","L. 517/77 e L. 104/92",["L. 118/71 e L. 18/2009","D.Lgs. 66/2017 e L. 18/2009","DPR 1994 e D.I. 182/2020"],"Integrazione: L. 517/77 e L. 104/92.",C(14)],
+["storia","La L. 517/1977 contiene…","norme sulla valutazione degli alunni e sull’abolizione degli esami di riparazione, e altre modifiche dell’ordinamento scolastico",["la legge-quadro per le persone handicappate","le norme in favore dei mutilati ed invalidi civili","l’istituzione dell’INPS come ente accertatore"],"Titolo della L. 517/77 nelle slide.",C(14)],
+["storia","L’INCLUSIONE è legata a…","Convenzione ONU ratificata con L. 18/2009 e D.Lgs. 66/2017",["L. 517/77 e L. 104/92","art. 28 L. 118/71","DPR 24/02/1994"],"Inclusione: Convenzione ONU (L. 18/2009) e D.Lgs. 66/2017.",C(14)],
+["storia","Con quale legge l’Italia ha ratificato la Convenzione ONU sui diritti delle persone con disabilità?","L. n. 18/2009",["L. n. 104/1992","L. n. 107/2015","L. n. 227/2021"],"Così nella slide «Inserimento-Integrazione-Inclusione».",C(14)],
+["storia","Qual è l’ordine corretto dei tre paradigmi?","Inserimento → Integrazione → Inclusione",["Integrazione → Inserimento → Inclusione","Inclusione → Integrazione → Inserimento","Inserimento → Inclusione → Integrazione"],"Dalla presenza fisica (1971) all’integrazione (1977, 1992) all’inclusione (2009, 2017).",C(14)],
+["storia","Il D.Lgs. 66/2017 è emanato a norma dell’art. 1, commi 180 e 181, lett. c) di quale legge?","L. 13 luglio 2015, n. 107",["L. 5 febbraio 1992, n. 104","L. 22 dicembre 2021, n. 227","L. 18/2009"],"Riportato nella slide su inserimento-integrazione-inclusione e nella slide sul D.Lgs. 66/2017.",C(14)],
+["storia","Oltre alle norme citate nelle slide, la L. 517/1977 è nota per aver…","abolito le classi differenziali e introdotto l’insegnante di sostegno specializzato",["istituito il GLO","ratificato la Convenzione ONU","introdotto il Profilo di Funzionamento"],"Contenuto non presente nelle slide (approfondimento dei riassunti).",C(14),1],
+
+["bes","Il DPR del 24/02/1994 è…","un atto di indirizzo e coordinamento relativo ai compiti delle unità sanitarie locali in materia di alunni portatori di handicap",["la legge-quadro sull’handicap","un decreto correttivo del D.Lgs. 66/2017","la Direttiva sui BES"],"Definizione della slide.",C(15)],
+["bes","Sul piano operativo il DPR 1994 ha consegnato alle scuole le procedure per…","acquisizione della Diagnosi Funzionale (dalle ASL) e redazione di Profilo Dinamico Funzionale e PEI",["Profilo di Funzionamento e Progetto di vita","Valutazione di base INPS e PEI","PDP e Piano per l’Inclusione"],"DF, PDF e PEI: la «vecchia» triade documentale.",C(15)],
+["bes","La Direttiva Ministeriale sui BES è del…","27 dicembre 2012",["6 marzo 2013","24 febbraio 1994","13 aprile 2017"],"Direttiva 27/12/2012 «Strumenti di intervento per alunni con BES e organizzazione territoriale per l’inclusione scolastica».",C(16)],
+["bes","Le indicazioni operative sulla Direttiva BES sono nella…","Circolare Ministeriale n. 8 del 6 marzo 2013",["C.M. n. 8 del 27 dicembre 2012","L. 18/2009","D.I. 182/2020"],"Il MIUR pubblica la C.M. n. 8 del 6 marzo 2013.",C(16)],
+["bes","Secondo le slide, la voce BES comprende…","le situazioni di difficoltà dovute a disabilità e quelle non derivanti da disabilità",["solo gli alunni con disabilità certificata","solo gli alunni con DSA","solo gli alunni stranieri"],"BES è un’area ampia.",C(16)],
+["bes","Quali sono le tre tipologie di alunni BES?","Con disabilità; con disturbi evolutivi specifici; con svantaggio",["Con disabilità; con DSA; con ADHD","Lieve; media; grave","Ordinari; personalizzati; differenziati"],"Le tre tipologie della slide «Gli alunni BES».",C(17)],
+["bes","I DSA rientrano nella categoria…","Disturbi Evolutivi Specifici",["Svantaggio","Disabilità certificata L. 104/92","Fattori ambientali"],"I Disturbi Evolutivi Specifici comprendono DSA e altri disturbi evolutivi.",C(17)],
+["bes","Gli alunni con background migratorio rientrano tra i BES con…","svantaggio",["disturbi evolutivi specifici","disabilità","DSA"],"Svantaggio: deprivazione socio-culturale e background migratorio.",C(17)],
+["bes","Per gli alunni BES con disabilità, chi redige il PEI secondo la slide?","In modo congiunto: insegnanti, famiglia, specialisti e tutte le figure professionali che si occupano dell’educazione",["Solo il docente di sostegno","Solo la ASL","Solo il Dirigente scolastico"],"La condizione è certificata ai sensi L. 104/92, con docente di sostegno per ore commisurate al bisogno.",C(18)],
+["bes","Per gli alunni con DSA la norma di riferimento (non citata nelle slide) è…","la L. 170/2010, con il PDP",["la L. 118/1971","il DPR 24/02/1994","il D.Lgs. 96/2019"],"Approfondimento dei riassunti, non presente nelle slide.",C(17),1],
+
+["d66","Il D.Lgs. 66/2017 si colloca nel solco di quali articoli della Costituzione?","Artt. 3, 34 e 38",["Artt. 1, 2 e 3","Artt. 19 e 24","Art. 14"],"Principi costituzionali e Convenzione ONU.",C(19)],
+["d66","Attraverso quali leve il D.Lgs. 66/2017 persegue il diritto all’educazione e alla partecipazione?","Rimozione delle barriere, personalizzazione dei percorsi, corresponsabilità scuola-famiglia-servizi",["Classi differenziali, scuole speciali, esami di riparazione","Solo aumento delle ore di sostegno","Accertamento INPS e Budget di Salute"],"Finalità centrale del decreto.",C(19)],
+["d66","Qual è l’elemento innovativo introdotto dal D.Lgs. 66/2017?","Il Profilo di Funzionamento (PF)",["La Diagnosi Funzionale","Il Profilo Dinamico Funzionale","La classificazione ICIDH"],"Il PF sostituisce progressivamente DF e PDF.",C(20)],
+["d66","Il Profilo di Funzionamento sostituisce progressivamente…","la Diagnosi Funzionale e il Profilo Dinamico Funzionale",["il PEI e il PDP","il GLO e il GLI","l’ICF e l’ICF-CY"],"È la base conoscitiva per la progettazione del PEI.",C(20)],
+["d66","Il PF integra dati…","sanitari, psicologici, sociali ed educativi",["solo sanitari","solo scolastici","solo economici"],"Descrive il funzionamento nei diversi contesti di vita.",C(20)],
+["d66","Secondo il D.Lgs. 66/2017 il PEI è strumento di…","progettazione educativa e didattica, personalizzazione degli apprendimenti, definizione di misure di sostegno e accomodamenti ragionevoli",["accertamento della disabilità","sola certificazione delle competenze","classificazione delle malattie"],"Ruolo centrale del PEI.",C(21)],
+["d66","Il PEI, secondo il D.Lgs. 66/2017, è elaborato in prospettiva…","interdisciplinare, collegiale e orientata alla partecipazione dell’alunno",["esclusivamente clinica","individuale del solo docente di sostegno","burocratica"],"Tre caratteristiche della slide.",C(21)],
+["d66","Il GIT (Gruppo per l’Inclusione Territoriale) opera…","a livello di ambito territoriale, con supporto tecnico e raccordo tra scuole e amministrazione",["in ogni scuola","per il singolo alunno","presso l’INPS"],"Primo livello dell’architettura dei gruppi.",C(22)],
+["d66","Il GLI (Gruppo di Lavoro per l’Inclusione) è…","istituito in ogni scuola: analisi dei bisogni, coordinamento delle pratiche inclusive, contributo al Piano per l’Inclusione",["dedicato al singolo alunno","operante a livello regionale","composto da INPS e ASL"],"Livello di istituto.",C(22)],
+["d66","Il GLO (Gruppo di Lavoro Operativo per l’Inclusione) è…","dedicato al singolo alunno con disabilità, responsabile dell’elaborazione e della verifica del PEI",["istituito a livello territoriale","responsabile del Piano per l’Inclusione d’istituto","un organo dell’INPS"],"Con docenti, famiglia e specialisti.",C(22)],
+
+["d96","Secondo la slide, il D.Lgs. 96/2019 è stato pubblicato in G.U. ed è entrato in vigore…","pubblicato il 28 agosto 2019, in vigore dal 12 settembre 2019",["pubblicato il 13 aprile 2017, in vigore dal 12 settembre 2017","pubblicato il 7 agosto 2019, in vigore dal 28 agosto 2019","pubblicato il 29 dicembre 2020"],"Nella bibliografia del file PEI il decreto è datato 7 agosto 2019 (data del decreto).",C(23)],
+["d96","Il D.Lgs. 96/2019 apporta…","disposizioni integrative e correttive al D.Lgs. 66/2017",["la ratifica della Convenzione ONU","l’abolizione degli esami di riparazione","il nuovo modello di ICF"],"È il «Decreto inclusione» correttivo.",C(23)],
+["d96","Il D.Lgs. 96/2019 rafforza il principio dell’accomodamento ragionevole, cioè…","l’obbligo di adottare misure adeguate e proporzionate per rimuovere gli ostacoli alla partecipazione scolastica",["la riduzione delle ore di sostegno","la possibilità di esonerare l’alunno dalle lezioni","l’obbligo di certificazione medica annuale"],"Ispirato anche alla Convenzione ONU.",C(23)],
+["d96","Con il D.Lgs. 96/2019 si passa…","dalla «disabilità certificata» alla «condizione di disabilità accertata»",["dalla «condizione di disabilità» all’«handicap»","dal PEI al PDP","dal GLO al GIT"],"Non semplice modifica terminologica ma cambio di prospettiva.",C(24)],
+["d96","Nel modello precedente la certificazione tendeva a essere intesa come atto…","statico, prevalentemente medico, fondato sul deficit, funzionale all’accesso alle risorse",["dinamico, situato, non definitivo","educativo e partecipato","interpretativo e multidimensionale"],"Così la slide descrive il modello superato.",C(24)],
+["d96","La «condizione di disabilità accertata» sottolinea che la disabilità…","non coincide con la diagnosi clinica, nasce dall’interazione persona-contesto ed è dinamica e situata",["coincide con la diagnosi clinica","è definitiva","serve solo ad accedere alle ore di sostegno"],"Tre caratteristiche della slide.",C(24)],
+["d96","L’unità di valutazione multidimensionale è prevista per l’elaborazione di…","Profilo di Funzionamento",["Piano per l’Inclusione","Certificazione delle competenze","Piano Didattico Personalizzato"],"Professionisti di area sanitaria, psicologica e sociale.",C(25)],
+["d96","Da quali aree provengono i professionisti dell’unità di valutazione multidimensionale?","Area sanitaria (medici specialisti per l’età evolutiva), psicologica, sociale",["Solo area scolastica","Area giuridica ed economica","INPS e Ministero"],"Opera in prospettiva bio-psico-sociale coerente con l’ICF.",C(25)],
+["d96","Perché nasce il D.Lgs. 96/2019 come correttivo?","Per risolvere criticità applicative: rischio di eccessiva burocratizzazione e compressione dell’autonomia scolastica",["Per abolire il PEI","Per sostituire l’ICF con l’ICD","Per ratificare la Convenzione ONU"],"Le modifiche riguardano soprattutto i gruppi per l’inclusione.",C(26)],
+["d96","Come cambia il GIT con il D.Lgs. 96/2019?","Ruolo ridimensionato: funzioni consultive e di supporto; non interviene più nei singoli PEI",["Diventa l’organo che approva i PEI","Sostituisce il GLO","Viene abolito"],"Funzioni consultive, di supporto e accompagnamento.",C(26)],
+["d96","Il GLI, con il D.Lgs. 96/2019, viene rafforzato come…","organo di coordinamento pedagogico interno e luogo di riflessione collegiale sull’inclusione",["organo che approva il singolo PEI","ufficio territoriale dell’USR","commissione medica"],"Contribuisce anche al Piano per l’Inclusione inserito nel PTOF.",C(27)],
+["d96","Il GLO, dopo il D.Lgs. 96/2019, è confermato come l’organo che…","elabora, approva, monitora e verifica il PEI",["accerta la disabilità","redige il Profilo di Funzionamento","redige il Piano per l’Inclusione"],"Con apertura al coinvolgimento dello studente in base a età e maturità.",C(28)],
+["d96","Riguardo al GLO, il D.Lgs. 96/2019 si apre esplicitamente…","al coinvolgimento dello studente, in base all’età e alla maturità",["all’esclusione della famiglia","alla sola presenza dei docenti","alla gestione da parte del GIT"],"Valorizzata anche la partecipazione attiva della famiglia.",C(28)],
+
+["di182","Il D.I. 29 dicembre 2020 n. 182 contiene…","le Linee guida per la compilazione del Profilo di Funzionamento e del PEI",["la ratifica della Convenzione ONU","l’accertamento INPS della disabilità","le norme sugli esami di riparazione"],"Si inserisce nell’attuazione dei D.Lgs. 66/2017 e 96/2019.",C(29)],
+["di182","Obiettivo principale del D.I. 182/2020:","documentazione (PF e PEI) redatta con criteri uniformi su tutto il territorio nazionale",["aumentare le ore di sostegno","abolire il GLO","introdurre l’ICIDH"],"Uniformità nazionale.",C(29)],
+["di182","Quali criteri prevede il D.I. 182/2020 per la documentazione?","Uniformità, chiarezza, completezza",["Rapidità, sintesi, riservatezza","Personalizzazione, differenziazione, certificazione","Inserimento, integrazione, inclusione"],"Tre criteri della slide.",C(30)],
+["di182","Il criterio della «completezza» richiede che…","ogni documento contenga tutte le informazioni essenziali, senza lacune o dati mancanti",["i modelli siano uguali in tutte le regioni","il linguaggio sia semplice","il PEI sia redatto entro giugno"],"Per la piena conoscenza della situazione funzionale, educativa e ambientale.",C(30)],
+["di182","Il criterio della «chiarezza» richiede che…","la documentazione sia semplice, comprensibile e ben strutturata, utilizzabile da tutti i soggetti coinvolti",["siano evitate disparità tra regioni","non manchino dati","siano usati codici ICF"],"Insegnanti, famiglie, specialisti, servizi.",C(30)],
+["di182","Il D.I. 182/2020 promuove una progettazione…","personalizzata e coerente",["standardizzata e uguale per tutti","solo clinica","differenziata e separata"],"Personalizzata sull’alunno, coerente tra le azioni.",C(31)],
+["di182","In merito al PEI, il D.I. 182/2020 definisce…","obiettivi personalizzati, strategie e interventi, risorse, modalità di verifica e valutazione, modulistica",["solo le ore di sostegno","la composizione dell’INPS","la classificazione ICD"],"Struttura e contenuti del PEI.",C(32)],
+["di182","Secondo la bibliografia del file PEI, il D.I. 1° agosto 2023 n. 153 contiene…","disposizioni correttive al D.I. 182/2020",["la ratifica della Convenzione ONU","il D.Lgs. 62/2024","la Direttiva BES"],"Citato nella bibliografia (modelli A1-A4 e Linee guida Allegato B).",P(42)],
+
+["d62","Il D.Lgs. 3 maggio 2024 n. 62 attua…","la Legge delega 22 dicembre 2021, n. 227",["la L. 13 luglio 2015, n. 107","la L. 5 febbraio 1992, n. 104","la L. 18/2009"],"Disposizioni in materia di disabilità.",C(33)],
+["d62","Il D.Lgs. 62/2024 ridefinisce la «condizione di disabilità» come…","esito dell’interazione tra compromissioni fisiche, mentali, intellettive o sensoriali e le barriere esistenti",["mera caratteristica individuale (deficit)","sinonimo di malattia","condizione definita solo dalla ASL"],"Approccio bio-psico-sociale, in linea con la Convenzione ONU.",C(33)],
+["d62","A chi il D.Lgs. 62/2024 attribuisce la titolarità esclusiva dell’accertamento della disabilità?","All’INPS",["Alle ASL","Alle scuole","Al Comune"],"Per uniformità, semplificazione e superamento delle disuguaglianze regionali.",C(34)],
+["d62","Perché il decreto prevede una fase di sperimentazione territoriale?","Per verificare la sostenibilità, monitorare l’impatto e introdurre correttivi prima dell’estensione nazionale",["Per abolire il PEI","Per sostituire l’INPS con le ASL","Per ridurre le ore di sostegno"],"Tre finalità della slide.",C(34)],
+["d62","Con l’art. 4 del D.Lgs. 62/2024 «disabile grave / in situazione di gravità» è sostituito da…","«persona con necessità di sostegno elevato / molto elevato / intensivo»",["«diversamente abile»","«portatore di handicap»","«alunno BES»"],"Adeguamento richiesto in normativa, modulistica, comunicazione e documenti ufficiali.",C(35)],
+["d62","Che cos’è la «valutazione di base»?","Procedimento unitario e multidisciplinare per accertare condizione di disabilità, intensità dei sostegni e esigenze",["Il colloquio iniziale con il docente di sostegno","La verifica intermedia del PEI","Il Piano per l’Inclusione"],"Nuova procedura di valutazione iniziale.",C(35)],
+["d62","La valutazione multidimensionale si configura come…","strumento interpretativo, non meramente certificativo",["procedimento esclusivamente medico","atto statico","verifica finale del PEI"],"Integra dimensioni sanitarie, sociali, educative e ambientali.",C(36)],
+["d62","In ottica inclusiva la valutazione multidimensionale rappresenta…","il passaggio dalla diagnosi alla lettura educativa del funzionamento",["il passaggio dal PEI al PDP","l’accesso alle prestazioni economiche","la certificazione delle competenze"],"Frase chiave della slide.",C(36)],
+["d62","Il progetto di vita previsto dal D.Lgs. 62/2024 riguarda…","l’intera vita della persona: salute, autonomia, inclusione sociale, lavoro, servizi",["solo l’istruzione scolastica","solo l’assistenza sanitaria","solo l’età adulta"],"Non solo educazione e formazione.",C(35)],
+["d62","Il Progetto di vita trova riconoscimento esplicito in…","Convenzione ONU (artt. 3, 19, 24) e D.Lgs. 62/2024",["L. 517/77 e L. 118/71","DPR 1994","Direttiva BES 2012"],"Trae le fondamenta dall’ICF.",C(37)],
+["d62","Il progetto di vita è «individuale» perché…","costruito a partire dalla singolarità irriducibile della persona",["redatto da un solo professionista","valido per una sola annualità","rivolto solo alla scuola"],"Storia, desideri, aspirazioni, competenze, limiti, potenzialità.",C(38)],
+["d62","La «personalizzazione» del progetto di vita…","non si riduce all’adattamento di servizi standardizzati: è una progettazione situata",["coincide con l’adattamento dei servizi esistenti","riguarda solo il percorso B","significa obiettivi minimi"],"Sensibile ai contesti di vita e alle transizioni evolutive.",C(38)],
+["d62","Nel progetto «partecipato», la persona con disabilità è riconosciuta come…","soggetto epistemico del proprio progetto",["oggetto di assistenza","destinatario passivo dei servizi","semplice utente consultato"],"Partecipazione connessa al principio di autodeterminazione.",C(39)],
+["d62","Nel progetto di vita, famiglia e contesti educativi e sociali hanno un ruolo di…","mediazione e supporto, non di sostituzione della volontà della persona",["sostituzione della volontà della persona","sola vigilanza","decisione finale"],"Superamento dei modelli assistenzialistici.",C(39)],
+["d62","Secondo le slide, il progetto di vita sposta il focus…","dalla prestazione al processo di sviluppo",["dal processo alla prestazione","dalla scuola alla sanità","dall’inclusione all’integrazione"],"E trasforma l’inclusione da obiettivo formale a orizzonte esistenziale.",C(40)],
+
+["pf","Il Profilo di Funzionamento (PF) è…","l’anello di congiunzione tra l’ambito sanitario e quello educativo",["un documento solo clinico","il verbale del GLO","il Piano per l’Inclusione"],"Sulla base dell’ICF descrive come l’alunno «funziona» nei diversi contesti.",P(2)],
+["pf","Quali sono le 4 dimensioni del PEI?","Socializzazione/Interazione; Comunicazione/Linguaggio; Autonomia/Orientamento; Cognitiva, Neuropsicologica e dell’Apprendimento",["Biologica; Psicologica; Sociale; Ambientale","Menomazione; Disabilità; Handicap; Svantaggio","Ordinaria; Personalizzata; Differenziata; Provvisoria"],"Le 4 dimensioni fondamentali.",P(2)],
+["pf","Motricità grossolana e fine e orientamento spazio-temporale appartengono alla dimensione…","dell’Autonomia e dell’Orientamento",["della Comunicazione e del Linguaggio","Cognitiva","della Socializzazione"],"Autonomie personali, sociali, orientamento, motricità.",P(2)],
+["pf","Capacità attentive, mnemoniche, stili cognitivi e processi d’apprendimento appartengono alla dimensione…","Cognitiva, Neuropsicologica e dell’Apprendimento",["dell’Autonomia","della Socializzazione","della Comunicazione"],"Quarta dimensione.",P(2)],
+["pf","Secondo la slide, l’architettura dell’ICF si basa sull’equazione…","Disabilità = Condizione di Salute + Fattori Ambientali (Barriere/Facilitatori)",["Disabilità = Menomazione + Handicap","Disabilità = Diagnosi + Terapia","Disabilità = Capacità − Performance"],"Per questo il PEI focalizza l’attenzione sui fattori ambientali.",P(3)],
+["pf","Quale tra questi è un FACILITATORE secondo gli esempi della slide?","La presenza di un compagno tutor",["Testi non adattati","Atteggiamenti svalutanti","Ambienti rumorosi"],"Facilitatori: sintesi vocale, clima inclusivo, mappe concettuali, compagno tutor.",P(3)],
+["pf","Quale tra questi è una BARRIERA secondo gli esempi della slide?","Testi non adattati",["Software di sintesi vocale","Mappe concettuali","Clima di classe inclusivo"],"Barriere: ambienti rumorosi, testi non adattati, atteggiamenti svalutanti.",P(3)],
+["pf","Nell’esempio di qualificazione ICF, la «capacità» descrive…","ciò che l’alunno fa senza aiuti",["ciò che fa con il facilitatore","il codice ambientale","la valutazione finale"],"Capacità (senza aiuti): difficoltà nella lettura autonoma; performance (con facilitatore): con sintesi vocale e mappa comprende il testo.",P(4)],
+["pf","Nell’esempio della slide, la «performance» con facilitatore è…","con sintesi vocale e mappa visiva l’alunno comprende e rielabora correttamente il testo",["l’alunno ha difficoltà nella lettura autonoma","l’alunno legge senza alcun aiuto","l’alunno viene dispensato dalla lettura"],"Esempio pratico di qualificazione ICF nel PEI.",P(4)],
+["pf","Nel PF, i codici ICF «b» e «d» descrivono rispettivamente…","le funzioni della persona; le attività che svolge e la sua partecipazione",["le barriere; i deficit","le strutture corporee; i fattori ambientali","la diagnosi; la disabilità"],"Così la slide del Quadro 4.",P(11)],
+["pf","Codici ICF di riferimento per la dimensione della Socializzazione e dell’Interazione:","d710–d770",["d310–d369","d510–d599","b140"],"Interazioni interpersonali semplici/complesse, relazioni con pari e adulti.",P(14)],
+["pf","Codici ICF della dimensione Comunicazione e Linguaggio:","d310–d369 e b310–b340",["d710–d770","d410–d489","e110–e599"],"Ricezione/produzione di messaggi; funzioni della voce e dell’eloquio.",P(15)],
+["pf","Codici ICF della dimensione Autonomia e Orientamento:","d510–d599 (cura di sé) e d410–d489 (mobilità)",["b140 e b144","d710–d770","d310–d369"],"Cura della propria persona; mobilità e orientamento nello spazio.",P(16)],
+["pf","Codici ICF della dimensione Cognitiva:","b140 (attenzione), b144 (memoria), d160–d179",["d710–d770","b310–b340","e250"],"Focalizzare l’attenzione, applicare le conoscenze, stili cognitivi.",P(17)],
+["pf","Nell’esempio del Quadro 4 (alunno disattento), quali codici sono indicati?","b140 – Funzioni dell’attenzione; d160 – Focalizzare l’attenzione",["b144 – Memoria; d710 – Interazioni","e250 – Rumore; e125 – Software","d510 – Cura di sé; d410 – Mobilità"],"Strumenti: timer visivo, pause programmate, checklist, rinforzo positivo.",P(12)],
+["pf","Che cosa sono i WLS?","Widgit Literacy Symbols: sistema di simboli grafici usato nella CAA",["Un test di lettura standardizzato","Un codice ICF della comunicazione","Una scala di valutazione INPS"],"Insieme ai PCS (Picture Communication Symbols).",P(15)],
+["pf","Che cos’è la Task Analysis?","La scomposizione di un compito in sotto-azioni",["Un’analisi delle barriere ambientali","La valutazione finale del PEI","Un software di sintesi vocale"],"Strumento della dimensione dell’Autonomia.",P(16)],
+["pf","Nella tabella «Progettazione ICF e interventi», a una barriera di elevato rumore di fondo in aula corrisponde…","banco lontano dalla porta; pannelli fonoassorbenti o cuffie anti-rumore",["micro-pause e compiti segmentati","Cooperative Learning con ruoli definiti","percorso differenziato"],"Fattori ambientali → intervento sul contesto.",P(7)],
+["pf","Esempio di obiettivo per la dimensione Cognitiva nella slide:","mantenere la concentrazione su un compito strutturato per 20 minuti continuativi",["aumentare la cooperazione nei lavori di gruppo a 15 minuti","preparare lo zaino seguendo un’agenda visiva","arricchire il lessico d’uso"],"Gli altri sono esempi delle dimensioni Socializzazione, Autonomia e Comunicazione.",P(17)],
+["pf","Gli obiettivi di Socializzazione e Autonomia del Quadro 4 devono essere coerenti con…","le azioni previste nel Progetto di Vita",["il Piano per l’Inclusione d’istituto","la classificazione ICD","il percorso A"],"L’osservazione non è più condotta soltanto nel contesto scolastico.",P(13)],
+
+["quadri","Il Quadro 1 raccoglie…","dati anagrafici, composizione del GLO, classe di riferimento e frequenza scolastica",["la storia familiare dell’alunno","i codici ICF del PF","il fabbisogno di ore di sostegno"],"Tra i componenti anche il Referente del Progetto di Vita dell’Ente Locale/ASL.",P(8)],
+["quadri","Il Quadro 2 (Cornice conoscitiva) è…","la fotografia della storia dell’alunno fornita dalla famiglia e dal GOP",["la sintesi dei codici ICF","la verifica finale","l’elenco delle barriere"],"Vita familiare, interessi, attitudini, aspettative, percezione dell’alunno.",P(9)],
+["quadri","Nel Quadro 3, secondo le slide, la fonte dei dati diventa…","l’esito della Valutazione di Base delle Commissioni INPS",["la Diagnosi Funzionale delle singole ASL","il verbale del GLI","l’osservazione del docente curricolare"],"Codici ICF e descrittori standardizzati a livello nazionale.",P(10)],
+["quadri","Nel Quadro 3 si riporta la sintesi dei codici ICF relativi a…","Funzioni Corporee (b) e Strutture Corporee (s)",["Fattori Ambientali (e)","Attività e Partecipazione (d)","Fattori personali"],"Evidenziando gravità, punti di forza strutturali e aree di vulnerabilità.",P(10)],
+["quadri","Quale Quadro è definito «la sezione centrale dell’analisi educativo-didattica»?","Quadro 4",["Quadro 1","Quadro 8","Quadro 12"],"Osservazione e progettazione sulle quattro Dimensioni.",P(11)],
+["quadri","Nel Quadro 5 si usa la sezione ICF dei Fattori Ambientali, codici…","e110–e599",["b110–b599","d110–d599","s110–s599"],"Per analizzare dove l’alunno apprende.",P(19)],
+["quadri","Nei qualificatori ambientali, il valore 3 indica…","Barriera grave/sostanziale oppure Facilitatore importante/sostanziale",["Barriera lieve / Facilitatore lieve","Barriera completa / Facilitatore completo","Barriera media / Facilitatore medio"],"1 lieve, 2 medio, 3 grave/sostanziale, 4 completo.",P(18)],
+["quadri","Il qualificatore +4 indica…","Facilitatore completo",["Barriera completa","Facilitatore lieve","Nessun facilitatore"],"Il segno + indica i facilitatori.",P(18)],
+["quadri","Nell’esempio del Quadro 5, «e250 rumore di fondo in aula» è valutato…","Barriera grave −3",["Facilitatore sostanziale +3","Barriera lieve −1","Facilitatore completo +4"],"Mentre e125 (software compensativi) = facilitatore sostanziale +3.",P(19)],
+["quadri","Secondo le slide, i facilitatori identificati nei Quadri 5 e 6 possono essere finanziati tramite…","il Budget di Salute/Budget di Progetto previsto dal D.Lgs. 62/2024",["i soli fondi scolastici ordinari","l’INPS","le tasse d’iscrizione"],"Si supera la sola dipendenza dai fondi scolastici o comunali ordinari.",P(20)],
+["quadri","Nel Quadro 6, quale intervento è indicato per potenziare i facilitatori?","Formazione della classe sulla CAA e adozione universale del font EasyReading",["Spostare l’alunno in un’altra aula","Ridurre l’orario scolastico","Percorso differenziato"],"Per abbattere una barriera acustica: cuffie antirumore, pannelli fonoassorbenti.",P(21)],
+["quadri","Impostazioni consigliate per EasyReading: interlinea e allineamento…","interlinea 1,5; allineamento a sinistra (evitando il giustificato)",["interlinea 1; testo giustificato","interlinea 2; testo centrato","interlinea 1,15; allineamento a destra"],"Testo 14–16 pt; titoli 18–20 pt in grassetto.",P(22)],
+["quadri","Dimensione consigliata del testo in EasyReading (materiali ordinari)?","14–16 pt",["10–12 pt","18–20 pt","24 pt"],"16–18 pt per la primaria o per chi ha maggiori difficoltà; titoli 18–20 pt.",P(22)],
+["quadri","Regola fondamentale del Quadro 7: gli interventi fuori dalla classe devono essere…","eccezionali, temporanei e strettamente motivati da bisogni specificati nel PEI",["la norma per gli alunni con disabilità","decisi dal solo docente di sostegno","previsti per almeno metà dell’orario"],"Bisogni sensoriali, emotivi o di autonomia.",P(23)],
+["quadri","Percorso A (ordinario) nel Quadro 8:","segue il programma della classe con strumenti compensativi o misure dispensative; valutazione identica alla classe",["obiettivi non riconducibili ai programmi; attestato","obiettivi minimi; prove adattate","esonero dalla valutazione"],"Ordinaria.",P(24)],
+["quadri","Il percorso B (personalizzato, obiettivi minimi)…","dà diritto al diploma",["dà diritto solo a un attestato di credito formativo","non prevede valutazione","segue programmi non ministeriali"],"Programma riconducibile a quello della classe, con prove adattate.",P(24)],
+["quadri","Il percorso C (differenziato)…","dà diritto a un attestato di credito formativo e non al diploma (salvo rientro nel percorso B)",["dà diritto al diploma","prevede valutazione identica alla classe","è riservato alla scuola primaria"],"Obiettivi non riconducibili ai programmi ministeriali; valutazione basata sul PEI.",P(24)],
+["quadri","La scelta tra percorso B e C, soprattutto nella secondaria, è ponderata in correlazione con…","la traiettoria di vita futura delineata nel Progetto di Vita",["il numero di ore di sostegno","il voto di condotta","la richiesta del solo docente curricolare"],"Es. orientamento lavorativo vs percorsi di autonomia sociale.",P(25)],
+["quadri","Il Quadro 9 definisce…","il fabbisogno di risorse da richiedere a USR ed Enti Locali per l’anno successivo",["la certificazione delle competenze","la cornice conoscitiva","il PEI provvisorio"],"Ore di sostegno, assistenza specialistica, trasporto e assistenza igienica.",P(26)],
+["quadri","Le ore di assistenza specialistica all’autonomia/comunicazione (Asacom) sono richieste…","all’Ente Locale (Comune/Provincia)",["all’INPS","all’USR","al GIT"],"Es. assistente alla comunicazione LIS o CAA.",P(26)],
+["quadri","Il Progetto di Vita dell’Ente Locale è stato istituito originariamente da…","art. 14 della L. 328/2000",["art. 28 della L. 118/1971","art. 4 del D.Lgs. 62/2024","L. 517/1977"],"Oggi radicalmente riformato e reso centrale dal D.Lgs. 62/2024.",P(27)],
+["quadri","Nel Quadro 10, il principio di «Coerenza» richiede che le note…","corrispondano esattamente ai criteri di valutazione della Sezione 8",["siano uguali per tutti gli alunni","siano redatte dalla famiglia","riportino i codici ICF"],"Accanto alla Funzione orientativa per il grado successivo.",P(31)],
+["quadri","Il Quadro 11 (verifica finale) si compila…","a fine anno scolastico, entro giugno",["entro il 31 ottobre","a gennaio","a settembre"],"Verifica obiettivi del Quadro 4, efficacia facilitatori del Quadro 6, proposta ore.",P(32)],
+["quadri","Il Quadro 12 (PEI provvisorio) si redige entro il 30 giugno…","esclusivamente per nuove certificazioni o passaggi tra gradi di istruzione",["per tutti gli alunni ogni anno","solo per il percorso C","solo su richiesta dell’INPS"],"Con richiesta provvisoria di risorse per settembre.",P(33)],
+["quadri","La «didattica differenziata» prevede…","obiettivi non riconducibili ai programmi ministeriali, con valutazione specifica",["obiettivi minimi con adattamenti","il programma della classe con strumenti compensativi","l’esonero dalla frequenza"],"Una delle tre modalità di rimodulazione delle discipline.",P(6)],
+
+["oltre","Nella logica del D.Lgs. 62/2024 il PEI diventa…","la sotto-sezione scolastica del Progetto di Vita",["un documento finale a sé stante","un allegato del verbale INPS","il Piano per l’Inclusione"],"Cessa di essere un «documento finale a sé stante».",P(34)],
+["oltre","I tre elementi dell’architettura dopo la Sezione 12 sono…","Programmazione risorse, Cornice unitaria (Progetto di vita), Controllo dinamico",["Inserimento, Integrazione, Inclusione","GIT, GLI, GLO","Uniformità, Chiarezza, Completezza"],"Matrice/Budget, Progetto di vita, Monitoraggio e valutazione partecipata.",P(35)],
+["oltre","I tre pilastri sintetizzati dal Progetto di vita sono…","PEI scolastico; Piano sanitario/ASL; Piano sociale/Comune",["PF, PDF, DF","ICD, ICF, ICF-CY","Percorso A, B, C"],"Istruzione; terapie e interventi abilitativi; Asacom, trasporti e autonomie territoriali.",P(35)],
+["oltre","Nella Matrice di Richiedibilità confluiscono…","i bisogni emersi dal PEI che travalicano le competenze strettamente didattiche",["solo le ore di sostegno didattico","i voti dell’alunno","i codici ICD"],"Ausili complessi, trasporti attrezzati, assistenze domiciliari, figure ad alta specializzazione.",P(36)],
+["oltre","La Matrice di Richiedibilità attiva…","il Budget di Progetto",["la valutazione di base","il PEI provvisorio","il GIT"],"Stanziamento integrato di risorse di Ente Locale e ASL.",P(36)],
+["oltre","Dopo il PEI, gli interventi abilitativi della ASL (logopedia, psicomotricità…) vengono…","sincronizzati con il tempo-scuola per evitare frammentazioni o sovrapposizioni",["sostituiti dal docente di sostegno","svolti solo d’estate","eliminati"],"Calendario formalizzato nell’allegato del Progetto di Vita.",P(37)],
+["oltre","Chi può richiedere la riconfigurazione del Progetto di Vita?","La persona (se maggiorenne) o i genitori",["Solo il Dirigente scolastico","Solo l’INPS","Il GIT"],"Attiva automaticamente la revisione straordinaria del PEI.",P(38)],
+["oltre","La riconfigurazione supera la rigidità delle scadenze fisse di…","gennaio (verifica intermedia) e giugno (verifica finale)",["settembre e dicembre","marzo e ottobre","solo luglio"],"Revisione straordinaria del PEI.",P(38)],
+["oltre","A chi la famiglia rivolge la richiesta del Progetto di Vita?","Al Comune di residenza",["All’INPS","Alla scuola","All’USR"],"Poi si insedia un tavolo di co-progettazione.",P(39)],
+["oltre","Chi compone il tavolo di co-progettazione del Progetto di Vita?","Assistente sociale del Comune, Unità valutativa ASL, famiglia (ed eventualmente l’alunno), scuola",["Solo docenti del GLO","INPS e USR","GIT e GLI"],"La scuola è rappresentata dal Dirigente o da un docente del GLO.",P(39)],
+["oltre","Nella Matrice di Richiedibilità, le ore di sostegno didattico proposte dal GLO all’USR diventano…","prestazione vincolante per il Ministero dell’Istruzione nell’organico di sostegno",["una richiesta facoltativa","competenza del Comune","parte del Budget di Salute ASL"],"Tabella di sintesi della slide 40.",P(40)],
+["oltre","Nel confronto di sintesi, l’origine dei dati (Q3-Q4) passa da…","Diagnosi Funzionale delle ASL con criteri disomogenei a Valutazione di Base unificata INPS su base ICF",["PEI provvisorio a PEI definitivo","GLI a GLO","ICF a ICD"],"Confronto D.I. 182/2020 vs D.Lgs. 62/2024.",P(41)],
+
+["uda","Quanto dura la microprogettazione secondo il format UDA?","Minimo 6, massimo 8 ore, in cinque fasi",["Minimo 10 ore in tre fasi","Un intero quadrimestre","2 ore in una fase"],"Si indicano periodo (da…a…) e giorno e orario di ogni fase.",U(14)],
+["uda","Nelle fasi 1-4 del format, la struttura è…","cosa fa l’insegnante; consegna per la classe; adattamento",["valutazione formativa; autovalutazione","prerequisiti; spazi; strumenti","punti di forza; criticità"],"Struttura identica per le fasi 1-4.",U(15)],
+["uda","L’adattamento nelle fasi 1-4 è…","sempre previsto, ancorato alla consegna e strutturato secondo il profilo iniziale dello studente",["facoltativo","previsto solo nella fase 5","deciso dalla famiglia"],"«Adattamento (sempre previsto)».",U(15)],
+["uda","La consegna per la classe nelle fasi 1-4 ha la finalità di…","verificare ciò che è stato appreso nella prima parte della fase",["sostituire la lezione","valutare il comportamento","assegnare i compiti a casa"],"Così nel format.",U(15)],
+["uda","La fase 5 prevede…","valutazione formativa e autovalutazione dello studente con disabilità",["lezione frontale e consegna","solo la verifica sommativa","la compilazione del PEI"],"Valutazione su attenzione, impegno, partecipazione e risultato, secondo il PEI.",U(15)],
+["uda","La valutazione formativa della fase 5 prende in esame…","attenzione, impegno, partecipazione e risultato finale, secondo gli obiettivi del PEI",["solo il risultato finale","solo il comportamento","i voti delle altre discipline"],"Quattro indicatori.",U(15)],
+["uda","L’autovalutazione dello studente con disabilità avviene mediante…","una griglia con indicatori in linguaggio accessibile ed emoji per le risposte",["un test a risposta aperta","un colloquio con l’INPS","una relazione scritta di 2 pagine"],"Rende la valutazione accessibile e partecipata.",U(15)],
+["uda","Il profilo dello studente con disabilità intellettiva nel format richiede…","punti di forza e aree di criticità, prendendo in esame le dimensioni del PEI",["solo la diagnosi clinica","i voti del primo quadrimestre","il codice ICD"],"Slide «Profilo studente con disabilità intellettiva».",U(4)],
+["uda","Le «competenze mirate» del format sono organizzate in…","assi culturali, cittadinanza, professionali",["conoscenze, abilità, atteggiamenti","lieve, medio, grave","A, B, C"],"Seguono conoscenze e abilità per disciplina.",U(8)],
+["uda","I prerequisiti, secondo il format, sono…","contenuti già acquisiti o abilità già esperite, necessari per prendere parte alla microprogettazione",["gli obiettivi finali","gli strumenti usati","gli adulti coinvolti"],"Voce «Prerequisiti».",U(10)],
+["uda","Nel format UDA, la dimensione dell’autonomia e dell’orientamento comprende anche…","capacità motorio-prassiche e dimensione sensoriale (visiva, uditiva, tattile)",["automatizzazione e generalizzazione","comprensione e produzione di messaggi","partecipazione alla vita sociale della scuola"],"Oltre ad autonomia personale e sociale e orientamento spazio-temporale.",U(5)],
+["uda","Nel format UDA, la dimensione cognitiva analizza anche…","capacità di automatizzazione e di generalizzazione",["capacità motorio-prassiche","dimensione sensoriale","interazione con i compagni"],"E capacità cognitive (memoria, intelletto) e organizzazione spazio-temporale.",U(5)],
+["uda","La voce «Risorse umane» del format indica…","gli adulti coinvolti nella microprogettazione",["gli studenti coinvolti","i materiali usati","il setting"],"«Utenti destinatari» indica invece gli studenti.",U(6)]
+];
+
+// Flashcard: [topic, fronte, retro, riferimento, approfondimento?]
+const CARDS=[
+["ling","«Idiota» (Séguin)","Individuo che si isola al punto di non comunicare e, incapace di rompere la barriera che lo separa dal mondo, richiede un trattamento educativo speciale.",C(2)],
+["ling","«Deficienti» (De Sanctis)","Termine usato da De Sanctis nel titolo di una delle sue opere, riferito a soggetti con disabilità intellettiva.",C(2)],
+["ling","«Handicappato» nella L. 104/92","Chi presenta una minorazione fisica, psichica, sensoriale, stabilizzata o progressiva, causa di difficoltà di apprendimento, relazione o integrazione lavorativa, tale da determinare svantaggio ed emarginazione.",C(3)],
+["ling","«Diversamente abile»: perché no?","Nasce per considerare (ipocritamente) la disabilità come una ricchezza per l’individuo: secondo le slide non può considerarsi tale.",C(4)],
+["ling","«Persona con disabilità»","Definizione corretta: la disabilità è una caratteristica della persona, né un valore aggiunto né una fragilità.",C(4)],
+["oms","Classificazioni OMS in ordine (con anni, secondo le slide)","ICD 1970 → ICIDH 1980 (fino al 1999) → ICIDH-2 1999 → ICF 2001 → ICF-CY 2007 (Venezia).",C(5)+"–11"],
+["oms","ICD","Classificazione Internazionale delle Malattie, Incidenti e Cause di Morte; oggi ICD-11; strumento per indagini statistiche e studi epidemiologici.",C(6)],
+["oms","Sequenza ICIDH","Menomazione → Disabilità → Handicap: la menomazione è causa della disabilità; la persona è vista come vincolata ai suoi limiti.",C(7)],
+["oms","Menomazione (ICIDH)","Qualsiasi perdita o atipicità di strutture o funzioni psicologiche, fisiologiche o anatomiche.",C(7)],
+["oms","Disabilità (ICIDH)","Gli effetti della menomazione: limitazione o perdita della capacità di compiere un’attività secondo parametri «normali».",C(7)],
+["oms","Handicap (ICIDH)","Condizione di svantaggio sociale conseguente a menomazione o disabilità, che limita il ruolo considerato normale per età, sesso e fattori socio-culturali.",C(7),1],
+["oms","ICIDH-2","Trampolino di lancio dell’ICF: dati eziologici integrati con l’analisi dell’impatto del deficit sull’individuo e sul contesto ambientale.",C(8)],
+["oms","ICF: i 3 ambiti dello stato di salute","Dotazione biologica; fattori contestuali esterni (relazioni, culture, ambienti); dimensione psicologica (autostima, identità, motivazione, autodeterminazione).",C(9)],
+["oms","A che cosa serve l’ICF?","A individuare le barriere da rimuovere e i facilitatori da promuovere, per raggiungere il massimo dell’auto-realizzazione.",C(10)],
+["oms","ICF-CY","Prima classificazione derivata dall’ICF, per 0–18 anni; presentata dall’OMS a Venezia nel 2007; considera crescita e sviluppo.",C(11)],
+["storia","Le 4 fasi della sintesi normativa","Pre-’60: esclusione → medicalizzazione · ’60/’75: → inserimento selvaggio · ’70/’90: → integrazione · post-’90: → inclusione.",C(13)],
+["storia","INSERIMENTO: quale norma?","Art. 28 L. 118/1971 (conversione del D.L. 30/1/1971 n. 5; norme per mutilati e invalidi civili).",C(14)],
+["storia","INTEGRAZIONE: quali norme?","L. 517/1977 (valutazione alunni, abolizione esami di riparazione) e L. 104/1992 (legge-quadro).",C(14)],
+["storia","INCLUSIONE: quali norme?","Convenzione ONU ratificata con L. 18/2009 e D.Lgs. 66/2017.",C(14)],
+["storia","L. 517/1977 (oltre il titolo)","Abolisce le classi differenziali; introduce l’insegnante di sostegno specializzato e la programmazione educativa.",C(14),1],
+["storia","Convenzione ONU: quando è stata adottata?","Dall’Assemblea generale ONU il 13 dicembre 2006 (in Italia ratificata con L. 18/2009).",C(14),1],
+["bes","DPR 24/02/1994","Atto di indirizzo e coordinamento sui compiti delle USL: procedure per Diagnosi Funzionale (ASL), Profilo Dinamico Funzionale e PEI.",C(15)],
+["bes","Direttiva 27/12/2012 e C.M. 8/2013","«Strumenti di intervento per alunni con BES e organizzazione territoriale per l’inclusione»; C.M. n. 8 del 6 marzo 2013 con indicazioni operative.",C(16)],
+["bes","Le 3 tipologie BES","1) Disabilità (L. 104/92); 2) Disturbi evolutivi specifici (DSA, altri); 3) Svantaggio (deprivazione socio-culturale, background migratorio).",C(17)],
+["bes","BES con disabilità","Certificazione L. 104/92; docente di sostegno per ore commisurate al bisogno; PEI redatto congiuntamente da insegnanti, famiglia, specialisti.",C(18)],
+["bes","DSA: norma e strumento","L. 170/2010 → PDP con strumenti compensativi e misure dispensative.",C(17),1],
+["d66","D.Lgs. 66/2017: base giuridica","Attuazione L. 107/2015 (art. 1, cc. 180-181); Costituzione artt. 3, 34, 38; Convenzione ONU.",C(19)],
+["d66","D.Lgs. 66/2017: tre leve","Rimozione delle barriere; personalizzazione dei percorsi; corresponsabilità scuola-famiglia-servizi.",C(19)],
+["d66","Profilo di Funzionamento (PF)","Sostituisce DF e PDF; descrive il funzionamento nei contesti di vita; integra dati sanitari, psicologici, sociali, educativi; base del PEI.",C(20)],
+["d66","PEI nel D.Lgs. 66/2017","Strumento di progettazione, personalizzazione, misure di sostegno e accomodamenti ragionevoli; interdisciplinare, collegiale, orientato alla partecipazione.",C(21)],
+["d66","GIT · GLI · GLO","GIT: ambito territoriale, supporto tecnico e raccordo. GLI: in ogni scuola, bisogni e Piano per l’Inclusione. GLO: singolo alunno, elabora e verifica il PEI.",C(22)],
+["d96","D.Lgs. 96/2019: date","Secondo la slide: pubblicato in G.U. il 28/8/2019, in vigore dal 12/9/2019. Nella bibliografia PEI: decreto del 7 agosto 2019.",C(23)+"; "+P(42)],
+["d96","Accomodamento ragionevole","Obbligo di adottare misure adeguate e proporzionate per rimuovere gli ostacoli alla partecipazione scolastica.",C(23)],
+["d96","Disabilità certificata → condizione di disabilità accertata","Prima: atto statico, medico, sul deficit, per le risorse. Ora: non coincide con la diagnosi, interazione persona-contesto, dinamica e situata.",C(24)],
+["d96","Unità di valutazione multidimensionale","Area sanitaria (specialisti età evolutiva), psicologica, sociale; prospettiva bio-psico-sociale; elabora il Profilo di Funzionamento.",C(25)],
+["d96","GIT dopo il D.Lgs. 96/2019","Ridimensionato: funzioni consultive, di supporto e accompagnamento; non interviene più nei singoli PEI.",C(26)],
+["d96","GLI dopo il D.Lgs. 96/2019","Rafforzato: coordinamento pedagogico interno, riflessione collegiale; supporto a Consigli di classe e GLO; Piano per l’Inclusione nel PTOF.",C(27)],
+["d96","GLO dopo il D.Lgs. 96/2019","Elabora, approva, monitora e verifica il PEI; docenti, famiglia, specialisti; possibile coinvolgimento dello studente.",C(28)],
+["di182","D.I. 182/2020: obiettivo","Linee guida per PF e PEI: documentazione con criteri uniformi su tutto il territorio nazionale.",C(29)],
+["di182","D.I. 182/2020: i 3 criteri","Uniformità · Chiarezza · Completezza.",C(30)],
+["di182","D.I. 182/2020: tipo di progettazione","Personalizzata e Coerente.",C(31)],
+["di182","D.I. 182/2020: cosa definisce sul PEI","Obiettivi didattici personalizzati; strategie e interventi; risorse umane, materiali, strumentali; verifica e valutazione; modulistica.",C(32)],
+["d62","D.Lgs. 62/2024: origine","D.Lgs. 3 maggio 2024 n. 62, attuazione della Legge delega 22 dicembre 2021 n. 227.",C(33)],
+["d62","Condizione di disabilità (D.Lgs. 62/2024)","Esito dell’interazione tra compromissioni fisiche, mentali, intellettive o sensoriali e le barriere sociali, ambientali, culturali.",C(33)],
+["d62","INPS nel D.Lgs. 62/2024","Titolarità esclusiva dell’accertamento: uniformità, semplificazione, superamento delle disuguaglianze regionali; con sperimentazione territoriale.",C(34)],
+["d62","Art. 4 D.Lgs. 62/2024: terminologia","«Disabile grave / in situazione di gravità» → «persona con necessità di sostegno elevato / molto elevato / intensivo»; «condizione di disabilità», «persona con disabilità».",C(35)],
+["d62","Valutazione di base vs multidimensionale","Base: riconoscimento della condizione di disabilità per prestazioni e sostegni. Multidimensionale: comprensione del funzionamento, strumento interpretativo.",C(36)],
+["d62","Progetto di vita: fondamenti","ICF; Convenzione ONU (artt. 3, 19, 24); D.Lgs. 62/2024 come asse unificante degli interventi educativi, sociali e sanitari.",C(37)],
+["d62","Progetto di vita: individuale · personalizzato · partecipato","Singolarità irriducibile · progettazione situata, non servizi standard · persona soggetto epistemico, autodeterminazione.",C(38)+"–39"],
+["d62","Progetto di vita come cornice unitaria","Integra educazione/formazione, interventi abilitativi, inclusione lavorativa e abitativa, partecipazione culturale; dalla prestazione al processo di sviluppo.",C(40)],
+["pf","PF → PEI","Il PF è l’anello di congiunzione sanitario-educativo; il PEI traduce le sue evidenze in obiettivi, strategie e strumenti sulle 4 dimensioni.",P(2)],
+["pf","Le 4 dimensioni del PEI","Socializzazione e Interazione · Comunicazione e Linguaggio · Autonomia e Orientamento · Cognitiva, Neuropsicologica e dell’Apprendimento.",P(2)],
+["pf","Equazione ICF (slide)","Disabilità = Condizione di Salute + Fattori Ambientali (Barriere/Facilitatori).",P(3)],
+["pf","Facilitatori vs Barriere (esempi)","Facilitatori: sintesi vocale, clima inclusivo, mappe, compagno tutor. Barriere: ambienti rumorosi, testi non adattati, atteggiamenti svalutanti.",P(3)],
+["pf","Capacità vs Performance","Capacità: senza aiuti (difficoltà nella lettura autonoma). Performance: con facilitatore (sintesi vocale + mappa → comprende e rielabora).",P(4)],
+["pf","Codici ICF b · s · d · e","b funzioni corporee · s strutture corporee · d attività e partecipazione · e fattori ambientali.",P(10)+", 11, 19"],
+["pf","Codici della dimensione Socializzazione","d710–d770.",P(14)],
+["pf","Codici della dimensione Comunicazione","d310–d369 e b310–b340.",P(15)],
+["pf","Codici della dimensione Autonomia","d510–d599 (cura di sé) e d410–d489 (mobilità e orientamento).",P(16)],
+["pf","Codici della dimensione Cognitiva","b140 attenzione, b144 memoria, d160–d179.",P(17)],
+["pf","CAA, WLS, PCS","Comunicazione Aumentativa Alternativa; Widgit Literacy Symbols; Picture Communication Symbols.",P(15)],
+["pf","Task Analysis · Visual Schedule · Time Timer","Scomposizione del compito in sotto-azioni · agenda visiva · timer visivo.",P(16)+"–17"],
+["quadri","Quadri 1-4","1 Dati generali (GLO) · 2 Cornice conoscitiva (famiglia, GOP) · 3 Elementi dal PF (INPS, codici b/s) · 4 Osservazione sulle 4 Dimensioni.",P(8)+"–11"],
+["quadri","Quadri 5-8","5 Contesto: barriere/facilitatori (e110–e599) · 6 Interventi sul contesto · 7 Presenza e partecipazione · 8 Percorso curricolare A/B/C.",P(19)+"–24"],
+["quadri","Quadri 9-12","9 Risorse umane · 10 Certificazione competenze · 11 Verifica finale (entro giugno) · 12 PEI provvisorio (entro 30 giugno).",P(26)+"–33"],
+["quadri","Qualificatori ambientali 1-4","1 lieve · 2 medio · 3 grave/sostanziale (importante) · 4 completo. Barriera −/punto, facilitatore +.",P(18)],
+["quadri","EasyReading: impostazioni","Testo 14–16 pt (16–18 primaria), titoli 18–20 pt grassetto, interlinea 1,5, allineamento a sinistra, testo scuro su sfondo uniforme.",P(22)],
+["quadri","Regola del Quadro 7","Interventi fuori dalla classe: eccezionali, temporanei, strettamente motivati da bisogni sensoriali, emotivi o di autonomia.",P(23)],
+["quadri","Percorsi A · B · C","A ordinario: valutazione come la classe · B personalizzato: prove adattate, diploma · C differenziato: valutazione su PEI, attestato (salvo rientro in B).",P(24)],
+["quadri","Quadro 9 e Asacom","Fabbisogno per l’anno dopo: ore di sostegno (USR), assistenza specialistica Asacom (Ente Locale), trasporto e assistenza igienica.",P(26)+"–27"],
+["quadri","Quadro 10: due principi","Coerenza con la Sezione 8; Funzione orientativa per il grado successivo.",P(31)],
+["oltre","PEI e D.Lgs. 62/2024","Il PEI diventa la sotto-sezione scolastica del Progetto di vita.",P(34)],
+["oltre","Architettura dopo la Sezione 12","1 Programmazione risorse (Matrice/Budget di Progetto) · 2 Cornice unitaria (Progetto di vita) · 3 Controllo dinamico (valutazione partecipata).",P(35)],
+["oltre","Matrice di Richiedibilità","Raccoglie i bisogni extra-didattici emersi dal PEI e attiva il Budget di Progetto (Ente Locale + ASL).",P(36)],
+["oltre","Riconfigurazione del Progetto di vita","Richiesta da persona maggiorenne o genitori → revisione straordinaria del PEI, oltre le scadenze di gennaio e giugno.",P(38)],
+["oltre","Chi attiva il Progetto di vita","Richiesta della famiglia al Comune; tavolo: assistente sociale, unità valutativa ASL, famiglia (alunno), scuola (Dirigente o docente GLO).",P(39)],
+["uda","Voci del format UDA","Denominazione, destinatari, profilo, risorse umane, compito/prodotto, competenze, conoscenze/abilità, prerequisiti, strumenti, metodologie, spazi, arco temporale, 5 fasi.",U(2)+"–15"],
+["uda","Arco temporale UDA","Periodo da…a…; 6–8 ore in cinque fasi; giorno e orario di ogni fase (es. fase 1, lunedì 8–10).",U(14)],
+["uda","Fasi 1-4 vs Fase 5","1-4: insegnante · consegna · adattamento (sempre). 5: valutazione formativa + autovalutazione con griglia accessibile ed emoji.",U(15)]
+];
+// Domande aperte: [topic, domanda, risposta modello, riferimento]
+const OPEN=[
+["ling","Perché termini come «idiota» e «deficiente» non vanno letti solo come offese?","Secondo la riflessione di Maura Gelati, quando furono ideati erano termini scientifici: Séguin usava «idiota» per l’individuo che si isola al punto da non comunicare e richiede un trattamento educativo speciale; De Sanctis usava «deficienti» per i soggetti con disabilità intellettiva. Il loro significato è cambiato nel tempo.",C(2)],
+["ling","Qual è la definizione corretta oggi e perché «diversamente abile» è criticata?","«Persona con disabilità»: la disabilità è una caratteristica della persona, né un valore aggiunto né una fragilità. «Diversamente abile» è criticata perché presenta, ipocritamente, la disabilità come una ricchezza. Il D.Lgs. 62/2024 (art. 4) aggiorna la terminologia verso «condizione di disabilità» e «persona con disabilità».",C(4)+"; "+C(35)],
+["ling","Come definisce l’handicappato la L. 104/1992?","Chi presenta una minorazione fisica, psichica o sensoriale, stabilizzata o progressiva, causa di difficoltà di apprendimento, relazione o integrazione lavorativa, tale da determinare svantaggio ed emarginazione. (La slide scrive per refuso «minoranza».)",C(3)],
+["oms","Quali classificazioni ha elaborato l’OMS e in quali anni?","ICD (1970 secondo le slide, oggi ICD-11), ICIDH (1980, in uso fino al 1999), ICIDH-2 (1999), ICF (2001), ICF-CY (2007, Venezia).",C(5)+"–11"],
+["oms","Qual era il limite dell’ICIDH?","L’impostazione medica e la sequenza lineare menomazione → disabilità → handicap, che faceva della menomazione la causa della disabilità e leggeva la persona come vincolata ai suoi limiti, impossibilitata a partecipare e contribuire alla vita sociale.",C(7)],
+["oms","Mi parli del passaggio dall’ICIDH all’ICF: che cosa introduce l’ICF?","Si passa da un’impostazione medica (menomazione → disabilità → handicap) a una visione bio-psico-sociale; l’ICIDH-2 (1999) è il trampolino di lancio. Lo stato di salute si descrive considerando dotazione biologica, fattori contestuali (relazioni, culture, ambienti) e dimensione psicologica (autostima, identità, motivazione, autodeterminazione). L’ICF permette di individuare barriere da rimuovere e facilitatori da promuovere per il massimo dell’auto-realizzazione.",C(7)+"–10"],
+["oms","Che cos’è l’ICF-CY e cosa aggiunge?","È la prima classificazione derivata dall’ICF, per la fascia 0-18 anni, presentata dall’OMS a Venezia nel 2007. Considera i cambiamenti legati a crescita e sviluppo e le diverse conseguenze, per incidenza e intensità, nell’infanzia, pubertà e adolescenza rispetto all’adulto.",C(11)],
+["storia","Illustri le fasi storiche della normativa e le leggi di inserimento, integrazione e inclusione.","Pre-’60: dall’esclusione alla medicalizzazione; ’60-’75: all’inserimento selvaggio; ’70-’90: all’integrazione; post-’90: all’inclusione. Inserimento: art. 28 L. 118/1971; integrazione: L. 517/1977 e L. 104/1992; inclusione: Convenzione ONU ratificata con L. 18/2009 e D.Lgs. 66/2017.",C(13)+"–14"],
+["bes","Che cosa stabiliva il DPR 24 febbraio 1994?","Atto di indirizzo e coordinamento sui compiti delle unità sanitarie locali: ha consegnato alle scuole le procedure per l’acquisizione della Diagnosi Funzionale da parte delle ASL e per la redazione del Profilo Dinamico Funzionale e del PEI.",C(15)],
+["bes","Chi sono gli alunni BES?","Secondo la Direttiva 27/12/2012 e la C.M. 8/2013: alunni con disabilità (L. 104/92), con disturbi evolutivi specifici (DSA e altri disturbi evolutivi), con svantaggio (deprivazione socio-culturale, background migratorio). Per gli alunni con disabilità si prevedono docente di sostegno e PEI redatto congiuntamente.",C(16)+"–18"],
+["d66","Quali sono le principali novità del D.Lgs. 66/2017?","Prospettiva ICF; Profilo di Funzionamento che sostituisce DF e PDF e fonda il PEI; PEI centrale (progettazione, personalizzazione, misure di sostegno e accomodamenti ragionevoli), interdisciplinare e collegiale; nuova architettura GIT-GLI-GLO; finalità: rimozione barriere, personalizzazione, corresponsabilità scuola-famiglia-servizi.",C(19)+"–22"],
+["d96","Cosa cambia con il D.Lgs. 96/2019?","Rafforza l’accomodamento ragionevole; passa dalla «disabilità certificata» (atto statico, medico, centrato sul deficit, funzionale alle risorse) alla «condizione di disabilità accertata» (dinamica, situata, frutto dell’interazione persona-contesto); ribadisce l’unità di valutazione multidimensionale; ridimensiona il GIT, rafforza GLI e GLO, valorizza famiglia e studente.",C(23)+"–28"],
+["di182","Qual è l’obiettivo del D.I. 182/2020?","Garantire che PF e PEI siano redatti con criteri uniformi su tutto il territorio nazionale (uniformità, chiarezza, completezza), per una progettazione personalizzata e coerente; definisce obiettivi, strategie, risorse, verifica e la modulistica del PEI.",C(29)+"–32"],
+["d62","Quali sono le innovazioni del D.Lgs. 62/2024?","Ridefinisce la condizione di disabilità come interazione tra compromissioni e barriere; affida all’INPS l’accertamento (uniformità, semplificazione, superamento delle disuguaglianze regionali) con sperimentazione territoriale; aggiorna la terminologia (art. 4); distingue valutazione di base e valutazione multidimensionale; introduce il progetto di vita individuale, personalizzato e partecipato.",C(33)+"–36"],
+["d62","Perché il progetto di vita è «individuale, personalizzato e partecipato»?","Individuale: parte dalla singolarità irriducibile della persona. Personalizzato: progettazione situata, attenta ai contesti e alle transizioni evolutive, non adattamento di servizi standard. Partecipato: la persona è coinvolta nelle decisioni come soggetto epistemico, secondo il principio di autodeterminazione; famiglia e servizi mediano e supportano senza sostituirsi alla sua volontà.",C(37)+"–40"],
+["pf","Che rapporto c’è tra Profilo di Funzionamento e PEI?","Il PF, su base ICF, è l’anello di congiunzione tra ambito sanitario ed educativo e descrive come l’alunno funziona nei contesti; il PEI prende in carico queste evidenze e le traduce in obiettivi didattico-educativi, strategie e strumenti sulle quattro dimensioni.",P(2)],
+["pf","Quali sono le quattro dimensioni del PEI?","Socializzazione e Interazione; Comunicazione e Linguaggio; Autonomia e Orientamento; Cognitiva, Neuropsicologica e dell’Apprendimento – con i rispettivi contenuti (relazioni; modalità espressive e ricettive; autonomie, orientamento, motricità; attenzione, memoria, stili cognitivi).",P(2)],
+["pf","Che cosa sono barriere e facilitatori? Faccia esempi.","Fattori ambientali che rispettivamente ostacolano o migliorano il funzionamento. Facilitatori: sintesi vocale, clima inclusivo, mappe, compagno tutor. Barriere: ambienti rumorosi (ipoacusia, autismo), testi non adattati, atteggiamenti svalutanti. Nel PEI si valutano con i codici e e i qualificatori da 1 a 4.",P(3)+", 18–19"],
+["pf","Che differenza c’è tra capacità e performance?","Capacità: ciò che l’alunno fa senza aiuti (es. difficoltà nella lettura autonoma). Performance: ciò che fa con i facilitatori (con sintesi vocale e mappa visiva comprende e rielabora il testo). La differenza mostra il peso del contesto.",P(4)],
+["pf","Come si compila il Quadro 4? Faccia un esempio.","Per ogni dimensione: punti di forza/debolezza dal PF, obiettivi, interventi, tecniche e strumenti. Esempio: alunno disattento, b140 e d160; punto di forza: attenzione in attività brevi e motivanti; obiettivo: tempo di attenzione progressivamente maggiore; intervento: attività brevi in sequenza; strumenti: timer visivo, pause programmate, checklist, rinforzo positivo.",P(11)+"–12"],
+["pf","Quali codici ICF corrispondono alle quattro dimensioni?","Socializzazione d710-d770; Comunicazione d310-d369 e b310-b340; Autonomia d510-d599 e d410-d489; Cognitiva b140, b144, d160-d179.",P(14)+"–17"],
+["quadri","Come funzionano i qualificatori ambientali?","Valori 1-4: lieve, medio, grave/sostanziale, completo; con il segno meno o il punto per le barriere (es. e250 rumore = -3) e il più per i facilitatori (es. e125 software compensativi = +3).",P(18)+"–19"],
+["quadri","Che cosa si scrive nei Quadri 5 e 6 e come si possono finanziare i facilitatori?","Q5: mappatura di ambienti fisici, materiali/tecnologie e contesto relazionale con i codici e110-e599. Q6: interventi per abbattere le barriere (cuffie, pannelli fonoassorbenti) e potenziare i facilitatori (formazione CAA, font EasyReading). I facilitatori possono essere finanziati con il Budget di Salute/di Progetto del D.Lgs. 62/2024.",P(19)+"–22"],
+["quadri","Qual è la regola fondamentale del Quadro 7?","Gli interventi fuori dalla classe devono essere eccezionali, temporanei e strettamente motivati da bisogni sensoriali, emotivi o di autonomia indicati nel PEI.",P(23)],
+["quadri","Distingua i percorsi A, B e C del Quadro 8.","A ordinario: programma della classe con strumenti compensativi/dispensativi, valutazione identica. B personalizzato (obiettivi minimi): programma riconducibile, prove adattate, diritto al diploma. C differenziato: obiettivi non riconducibili ai programmi ministeriali, valutazione sul PEI, attestato di credito formativo (salvo rientro in B). La scelta B/C va legata alla traiettoria del Progetto di vita.",P(24)+"–25"],
+["quadri","Che cosa contiene il Quadro 9 e perché è così importante?","Il fabbisogno di risorse per l’anno successivo: ore di sostegno (giustificate su PF e Quadro 4), assistenza specialistica Asacom richiesta all’Ente Locale, trasporto e assistenza igienica. Ha il maggior impatto applicativo: la quantificazione deve basarsi in modo vincolante sulle matrici PF/INPS ed essere in continuità con il Progetto di vita (art. 14 L. 328/2000, D.Lgs. 62/2024).",P(26)+"–27"],
+["quadri","Come si adattano le note del Quadro 10 nei tre percorsi?","A: traguardi raggiunti grazie a strumenti compensativi e misure dispensative; B: enunciati rapportati a obiettivi specifici e ridotti; C: enunciati rapportati esclusivamente agli obiettivi di PF e PEI. Principi: coerenza con la Sezione 8 e funzione orientativa per il grado successivo.",P(28)+"–31"],
+["quadri","Quando si compilano il Quadro 11 e il Quadro 12?","Q11 a fine anno (entro giugno): verifica degli obiettivi del Q4, efficacia dei facilitatori del Q6, proposta di ore per l’anno dopo. Q12, PEI provvisorio, entro il 30 giugno solo per nuove certificazioni o passaggi di grado, con richiesta provvisoria di risorse per settembre.",P(32)+"–33"],
+["oltre","Che cosa cambia per il PEI con il D.Lgs. 62/2024?","Il PEI diventa la sotto-sezione scolastica del Progetto di vita; i dati del Q3 provengono dalla Valutazione di Base INPS; i bisogni extra-didattici confluiscono nella Matrice di Richiedibilità che attiva il Budget di Progetto; gli interventi ASL si sincronizzano con il tempo-scuola; la riconfigurazione del Progetto di vita attiva la revisione straordinaria del PEI.",P(34)+"–41"],
+["oltre","Chi attiva e redige il Progetto di vita?","Su richiesta della famiglia (o della persona maggiorenne) al Comune di residenza; si insedia un tavolo di co-progettazione con assistente sociale del Comune, unità valutativa ASL, famiglia (ed eventualmente l’alunno) e scuola (Dirigente o docente del GLO). L’esito è il Progetto di vita sostenuto dal Budget di Salute e di Progetto, che stabilisce le risorse, incluso l’assistente all’autonomia e alla comunicazione.",P(39)],
+["uda","Quali sono le voci del format UDA?","Denominazione, utenti destinatari, profilo dello studente con disabilità intellettiva, risorse umane, compito/prodotto, competenze mirate, conoscenze e abilità per disciplina, prerequisiti, strumenti e materiali, metodologie/strategie/tecniche, spazi, arco temporale, cinque fasi.",U(2)+"–15"],
+["uda","Come si costruisce il profilo dello studente nel format UDA?","Indicando punti di forza e aree di criticità secondo le quattro dimensioni del PEI.",U(4)+"–5"],
+["uda","Che cosa comprende la dimensione dell’autonomia e dell’orientamento nel format?","Autonomia personale e sociale, capacità motorio-prassiche (grosso- e fino-motorie), dimensione sensoriale (visiva, uditiva, tattile), orientamento spaziale e temporale.",U(5)],
+["uda","Che cosa analizza la dimensione cognitiva, neuropsicologica e dell’apprendimento nel format?","Capacità cognitive (memoria, intelletto), organizzazione spazio-temporale, capacità di automatizzazione e di generalizzazione.",U(5)],
+["uda","Quali competenze mirate prevede il format?","Competenze riferite agli assi culturali, di cittadinanza e professionali; poi conoscenze e abilità per disciplina.",U(8)+"–9"],
+["uda","Che cosa sono i prerequisiti?","I contenuti che gli studenti devono avere già acquisito o le abilità già esperite per prendere parte alla microprogettazione.",U(10)],
+["uda","Quanto dura una UDA e come si organizza il tempo?","Da 6 a 8 ore, in cinque fasi; si indicano il periodo (da… a…) e, per ogni fase, giorno e orario (es. fase 1, lunedì dalle 8 alle 10).",U(14)],
+["uda","Come sono strutturate le fasi 1-4?","Cosa fa l’insegnante (es. lezione frontale, brainstorming, video); consegna per la classe per verificare quanto appreso nella prima parte della fase; adattamento sempre previsto, ancorato alla consegna e al profilo iniziale dello studente.",U(15)],
+["uda","Che cosa prevede la fase 5?","Valutazione formativa (attenzione, impegno, partecipazione, risultato finale secondo gli obiettivi del PEI) e autovalutazione dello studente con disabilità mediante griglia con indicatori in linguaggio accessibile ed emoji.",U(15)],
+["uda","Perché l’autovalutazione con emoji è significativa?","Perché rende la valutazione accessibile e coinvolge lo studente con disabilità come protagonista del proprio percorso, coerentemente con il principio di partecipazione e autodeterminazione visto nella cornice normativa (es. progetto di vita «partecipato»).",U(15)+"; "+C(39)]
+];
+// Timeline: [anno, titolo, dettaglio, topic, riferimento, approf?]
+const TIMELINE=[
+["1970","ICD","Classificazione Internazionale delle Malattie, Incidenti e Cause di Morte (OMS). Strumento per indagini statistiche e studi epidemiologici; oggi giunta all’ICD-11. Anno indicato nelle slide.","oms",C(5)+"–6"],
+["1971","L. 118/1971, art. 28 · INSERIMENTO","Conversione del D.L. 30 gennaio 1971 n. 5, nuove norme in favore dei mutilati ed invalidi civili. L’art. 28 ufficializza l’inserimento.","storia",C(14)],
+["1977","L. 517/1977 · INTEGRAZIONE","Norme sulla valutazione degli alunni e sull’abolizione degli esami di riparazione, nonché altre norme di modifica dell’ordinamento scolastico.","storia",C(14)],
+["1980","ICIDH","Impostazione medica: menomazione → disabilità → handicap. In uso fino al 1999. Limite: la persona vista come vincolata ai suoi limiti.","oms",C(5)+", 7"],
+["1992","L. 104/1992 · Legge-quadro","Legge-quadro per l’assistenza, l’integrazione sociale e i diritti delle persone handicappate (5 febbraio 1992). Termine chiave: «handicappato». Integrazione; certificazione della disabilità.","storia",C(3)+", 14, 18"],
+["1994","DPR 24 febbraio 1994","Atto di indirizzo e coordinamento sui compiti delle USL: Diagnosi Funzionale (ASL), Profilo Dinamico Funzionale, PEI.","bes",C(15)],
+["1999","ICIDH-2","Trampolino di lancio dell’ICF: integra i dati eziologici con l’impatto del deficit sull’individuo e sul contesto.","oms",C(8)],
+["2001","ICF","Visione bio-psico-sociale: dotazione biologica, fattori contestuali, dimensione psicologica. Individua barriere e facilitatori.","oms",C(9)+"–10"],
+["2007","ICF-CY (Venezia)","Versione per bambini e adolescenti (0-18 anni), presentata dall’OMS a Venezia: considera crescita e sviluppo.","oms",C(11)],
+["2009","L. 18/2009 · INCLUSIONE","Ratifica della Convenzione ONU sui diritti delle persone con disabilità.","storia",C(14)],
+["2012","Direttiva Ministeriale 27/12/2012 · BES","«Strumenti di intervento per alunni con bisogni educativi speciali e organizzazione territoriale per l’inclusione scolastica». Tre tipologie: disabilità, disturbi evolutivi specifici, svantaggio.","bes",C(16)+"–17"],
+["2013","C.M. n. 8 del 6 marzo 2013","Indicazioni operative sulla Direttiva BES del 27 dicembre 2012.","bes",C(16)],
+["2015","L. 107/2015","Legge 13 luglio 2015 n. 107: l’art. 1, commi 180 e 181, è la delega da cui nasce il D.Lgs. 66/2017.","d66",C(14)+", 19"],
+["2017","D.Lgs. 66/2017 (13 aprile)","Norme per la promozione dell’inclusione scolastica: prospettiva ICF, Profilo di Funzionamento, PEI centrale, GIT-GLI-GLO.","d66",C(19)+"–22"],
+["2019","D.Lgs. 96/2019","Correttivo del 66/2017 (G.U. 28/8/2019, in vigore 12/9/2019; datato 7/8/2019 nella bibliografia PEI): accomodamento ragionevole, «condizione di disabilità accertata», unità di valutazione multidimensionale, modifiche a GIT/GLI/GLO.","d96",C(23)+"–28"],
+["2020","D.I. 182/2020 (29 dicembre)","Linee guida per PF e PEI: uniformità, chiarezza, completezza; progettazione personalizzata e coerente; modulistica del PEI.","di182",C(29)+"–32"],
+["2021","L. 227/2021 (22 dicembre)","Legge delega in materia di disabilità, attuata dal D.Lgs. 62/2024.","d62",C(33)],
+["2023","D.I. 153/2023 (1° agosto)","Disposizioni correttive al D.I. 182/2020; modelli nazionali di PEI (Allegati A1-A4) e Linee guida (Allegato B). Citato nella bibliografia del file PEI.","di182",P(42)+"–43"],
+["2024","D.Lgs. 62/2024 (3 maggio)","Condizione di disabilità come interazione con le barriere; accertamento INPS; art. 4 terminologia; valutazione di base e multidimensionale; Progetto di vita individuale, personalizzato e partecipato; il PEI ne diventa la sotto-sezione scolastica.","d62",C(33)+"–40; "+P(34)]
+];
+const MAPS=["Panoramica del corso","Il linguaggio (Gelati)","Modelli OMS: ICD → ICF-CY","Fasi storiche e paradigmi","DPR 1994 e BES","D.Lgs. 66/2017","D.Lgs. 96/2019","Gruppi per l’inclusione: GIT · GLI · GLO","D.I. 182/2020","D.Lgs. 62/2024","Progetto di vita","PF, PEI e ICF","Qualificatori ICF","Le 4 Dimensioni del PEI","Quadri 1–6","Quadri 7–12","Percorsi A · B · C","GLO e tempi del PEI","PEI e Progetto di vita","Attivazione e confronto 182/2020 – 62/2024","Collegamenti per l’orale"];
+const MAPTOPIC=[null,"ling","oms","storia","bes","d66","d96","d66","di182","d62","d62","pf","quadri","pf","quadri","quadri","quadri","quadri","oltre","oltre",null];
+
+"use strict";
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const TBY={};TOPICS.forEach(t=>TBY[t.id]=t);
+const SRCN={C:"Cornice",P:"PEI",U:"UDA"};
+const EXAM=new Date(2026,9,23,15,0,0); // venerdì 23/10/2026, pomeriggio (orario indicativo)
+const KEY="tfa_perciavalle_studio_v1";
+let S;try{S=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){S={}}
+S.quiz=S.quiz||{};S.cards=S.cards||{};S.oral=S.oral||{};S.log=S.log||[];
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function toast(m){const d=document.createElement("div");d.className="toast";d.textContent=m;document.body.appendChild(d);setTimeout(()=>d.remove(),2200)}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+const approfTag='<span class="approf" title="Contenuto aggiuntivo dei riassunti: non presente nelle slide della docente">approfondimento, non nelle slide</span>';
+const refTag=r=>`<span class="ref">📑 ${esc(r)}</span>`;
+
+/* ---------- metriche ---------- */
+function topicStats(id){
+  const qs=QUIZ.map((q,i)=>[q,i]).filter(([q])=>q[0]===id);
+  let ans=0,right=0,cor=0,wrong=0;
+  qs.forEach(([q,i])=>{const r=S.quiz[i];if(r){ans++;if(r.last)right++;cor+=r.c;wrong+=r.w}});
+  const cs=CARDS.map((c,i)=>[c,i]).filter(([c])=>c[0]===id);
+  let cardsum=0,known=0;cs.forEach(([c,i])=>{const b=(S.cards[i]||{}).box||0;cardsum+=b?(b-1)/4:0;if(b>=3)known++});
+  const os=OPEN.map((o,i)=>[o,i]).filter(([o])=>o[0]===id);
+  let osum=0,odone=0;os.forEach(([o,i])=>{const r=S.oral[i];if(r&&r.length){odone++;osum+=r[r.length-1]/5}});
+  const qScore=qs.length?right/qs.length:0, cScore=cs.length?cardsum/cs.length:0, oScore=os.length?osum/os.length:0;
+  const progress=Math.round(100*(0.5*qScore+0.3*cScore+0.2*oScore));
+  const acc=(cor+wrong)?cor/(cor+wrong):null;
+  const oralAvg=odone?osum/odone*5:null;
+  return {id,nq:qs.length,ans,right,acc,nc:cs.length,known,no:os.length,odone,oralAvg,progress};
+}
+function allStats(){return TOPICS.map(t=>topicStats(t.id))}
+function weakness(st){ // più alto = più debole
+  if(st.acc===null&&st.oralAvg===null&&!st.known) return 0.6-st.progress/200;
+  let w=0,n=0; if(st.acc!==null){w+=1-st.acc;n++} if(st.oralAvg!==null){w+=1-st.oralAvg/5;n++}
+  return (n?w/n:0.5)*0.8+(1-st.progress/100)*0.2;
+}
+function weakTopics(k,rnd){const s=rnd?shuffle(allStats()):allStats();return s.sort((a,b)=>weakness(b)-weakness(a)).slice(0,k)}
+
+/* ---------- router ---------- */
+const VIEWS=["home","quiz","flash","timeline","mappe","orale","stats"];
+let timerId=null;
+function go(v,opt){
+  if(!VIEWS.includes(v))v="home";
+  document.querySelectorAll(".nav").forEach(b=>b.classList.toggle("on",b.dataset.v===v));
+  if(v!=="orale")stopTimer();document.querySelectorAll(".toast").forEach(t=>t.remove());document.onkeydown=null;
+  const m=$("#main");m.innerHTML="";window.scrollTo(0,0);
+  ({home:vHome,quiz:vQuiz,flash:vFlash,timeline:vTimeline,mappe:vMappe,orale:vOrale,stats:vStats})[v](m,opt||{});
+  if(location.hash!=="#"+v)history.replaceState(null,"","#"+v);
+}
+
+/* ---------- HOME ---------- */
+let cdInt=null;
+function vHome(m){
+  const st=allStats();const tot=Math.round(st.reduce((a,s)=>a+s.progress*s.nq,0)/QUIZ.length);
+  const C=2*Math.PI*56;
+  m.innerHTML=`<div class="hero">
+   <div class="ring"><svg width="132" height="132"><circle cx="66" cy="66" r="56" stroke="rgba(255,255,255,.22)" stroke-width="12" fill="none"/><circle cx="66" cy="66" r="56" stroke="#fff" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-tot/100)}"/></svg><div class="v"><div>${tot}%<small>preparazione</small></div></div></div>
+   <div style="flex:1;min-width:260px;z-index:1"><h1>Interrogazione: venerdì 23 ottobre, pomeriggio</h1>
+   <p>Pedagogia della disabilità intellettiva · prof.ssa Valentina Perciavalle</p>
+   <div class="cd" id="cd"></div>
+   <div class="row" style="margin-top:16px"><button class="btn w big" id="weakBtn">🎯 Ripassa i punti deboli</button><button class="btn alt" style="background:rgba(255,255,255,.18);color:#fff" data-go="orale">🎤 Simula l’orale</button></div></div></div>
+   <div class="grid g4" style="margin:22px 0">
+    <div class="card kpi"><b>${QUIZ.length}</b><span>domande a scelta multipla</span></div>
+    <div class="card kpi"><b>${CARDS.length}</b><span>flashcard</span></div>
+    <div class="card kpi"><b>${OPEN.length}</b><span>domande aperte d’esame</span></div>
+    <div class="card kpi"><b>${MAPS.length}</b><span>mappe concettuali</span></div></div>
+   <h2>Progressi per argomento</h2><p class="sub" style="margin-bottom:14px">Tocca un argomento per un quiz mirato. Il punteggio combina quiz (50%), flashcard (30%) e simulazione orale (20%).</p>
+   <div class="grid g3" id="tgrid"></div>
+   <p class="note" style="margin-top:22px">Tutti i contenuti seguono le slide della docente (Cornice storico-normativa, PEI, Format UDA), con il numero di slide come riferimento. Gli elementi marcati ${approfTag} provengono dai riassunti e non sono nelle slide.</p>`;
+  const g=$("#tgrid");
+  st.forEach(s=>{const t=TBY[s.id];const d=document.createElement("div");d.className="tcard";d.style.setProperty("--c",t.color);
+    d.innerHTML=`<div class="src">${SRCN[t.src]}</div><h3>${esc(t.name)}</h3><div class="bar"><i style="width:${s.progress}%"></i></div><div class="meta"><span>${s.progress}%</span><span>${s.ans}/${s.nq} quiz · ${s.known}/${s.nc} card</span></div>`;
+    d.onclick=()=>go("quiz",{topics:[s.id],autostart:true});g.appendChild(d)});
+  $("#weakBtn").onclick=()=>go("quiz",{weak:true});
+  m.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go));
+  const tick=()=>{const el=$("#cd");if(!el){clearInterval(cdInt);return}
+    let d=EXAM-new Date();if(d<=0){el.innerHTML=`<div style="min-width:auto;padding:10px 16px"><b style="font-size:20px">In bocca al lupo! 🍀</b></div>`;return}
+    const D=Math.floor(d/864e5),H=Math.floor(d%864e5/36e5),M=Math.floor(d%36e5/6e4),Sx=Math.floor(d%6e4/1e3);
+    el.innerHTML=[[D,"giorni"],[H,"ore"],[M,"minuti"],[Sx,"secondi"]].map(([v,l])=>`<div><b>${String(v).padStart(2,"0")}</b><span>${l}</span></div>`).join("")};
+  clearInterval(cdInt);tick();cdInt=setInterval(tick,1000);
+}
+
+/* ---------- QUIZ ---------- */
+let QZ=null;
+function chipBar(sel,onchg){
+  const w=document.createElement("div");w.className="chips";
+  const all=document.createElement("button");all.className="chip plain"+(sel.size===0?" on":"");all.style.setProperty("--c","#5b5fe0");all.textContent="Tutti gli argomenti";
+  all.onclick=()=>{sel.clear();onchg()};w.appendChild(all);
+  TOPICS.forEach(t=>{const b=document.createElement("button");b.className="chip"+(sel.has(t.id)?" on":"");b.style.setProperty("--c",t.color);b.textContent=t.name;
+    b.onclick=()=>{sel.has(t.id)?sel.delete(t.id):sel.add(t.id);onchg()};w.appendChild(b)});
+  return w;
+}
+function vQuiz(m,opt){
+  if(opt.weak){startQuiz(weakSet(),"Ripasso dei punti deboli");return}
+  const sel=new Set(opt.topics||[]);
+  if(opt.autostart){startQuiz(pool(sel,true,10),TBY[[...sel][0]].name);return}
+  let n=10,inclA=true;
+  const draw=()=>{
+    const p=pool(sel,inclA,9999);
+    m.innerHTML=`<h1>Quiz</h1><p class="sub">Feedback immediato con spiegazione e riferimento alla slide. Scegli uno o più argomenti.</p><div id="cb"></div>
+    <div class="card"><div class="row" style="justify-content:space-between"><div class="row">
+     <label>Domande: <select id="nq"><option>5</option><option>10</option><option>20</option><option>40</option><option value="9999">tutte</option></select></label>
+     <label class="row" style="gap:6px"><input type="checkbox" id="ia" ${inclA?"checked":""}> includi approfondimenti (non nelle slide)</label></div>
+     <div class="row"><span class="note">${p.length} disponibili</span><button class="btn big" id="go">Inizia ▶</button></div></div></div>
+     <div class="row" style="margin-top:14px"><button class="btn alt" id="wk">🎯 Ripassa i punti deboli</button><button class="btn alt" id="er">↺ Solo quelle sbagliate</button></div>`;
+    $("#cb").appendChild(chipBar(sel,draw));$("#nq").value=String(n);
+    $("#nq").onchange=e=>n=+e.target.value;$("#ia").onchange=e=>{inclA=e.target.checked;draw()};
+    $("#go").onclick=()=>{const q=pool(sel,inclA,n);if(!q.length)return toast("Nessuna domanda per questa selezione");startQuiz(q,sel.size?[...sel].map(i=>TBY[i].name).join(", "):"Tutti gli argomenti")};
+    $("#wk").onclick=()=>startQuiz(weakSet(),"Ripasso dei punti deboli");
+    $("#er").onclick=()=>{const q=QUIZ.map((_,i)=>i).filter(i=>S.quiz[i]&&!S.quiz[i].last&&(!sel.size||sel.has(QUIZ[i][0])));if(!q.length)return toast("Nessuna domanda sbagliata da ripassare 👏");startQuiz(shuffle(q).slice(0,n),"Domande sbagliate")};
+  };draw();
+}
+function pool(sel,inclA,n){
+  let ids=QUIZ.map((_,i)=>i).filter(i=>(!sel.size||sel.has(QUIZ[i][0]))&&(inclA||!QUIZ[i][6]));
+  // priorità: mai viste e sbagliate prima
+  ids=shuffle(ids).sort((a,b)=>prio(b)-prio(a));
+  return shuffle(ids.slice(0,n));
+}
+function prio(i){const r=S.quiz[i];if(!r)return 2;if(!r.last)return 3;return r.w>0?1:0}
+function weakSet(){
+  const wt=weakTopics(3,true).map(s=>s.id);
+  const wrong=QUIZ.map((_,i)=>i).filter(i=>S.quiz[i]&&!S.quiz[i].last);
+  const rest=pool(new Set(wt),true,15).filter(i=>!wrong.includes(i));
+  return shuffle(shuffle(wrong).slice(0,8).concat(rest)).slice(0,15);
+}
+function startQuiz(ids,label){QZ={ids,i:0,ok:0,label,wrong:[]};renderQ()}
+function renderQ(){
+  const m=$("#main");const z=QZ;
+  if(z.i>=z.ids.length)return endQuiz();
+  const qi=z.ids[z.i],q=QUIZ[qi],t=TBY[q[0]];
+  const opts=shuffle([{t:q[2],ok:1}].concat(q[3].map(x=>({t:x,ok:0}))));
+  m.innerHTML=`<div class="qbox"><div class="qtop"><span>${esc(z.label)}</span><span>${z.i+1} / ${z.ids.length} · ✅ ${z.ok}</span></div>
+   <div class="prog"><i style="width:${z.i/z.ids.length*100}%"></i></div>
+   <div class="card"><div class="row"><span class="tag" style="--c:${t.color}">${esc(t.name)}</span>${q[6]?approfTag:""}</div>
+   <div class="qtext">${esc(q[1])}</div><div id="opts"></div><div id="fb"></div>
+   <div class="row" style="justify-content:space-between"><button class="btn alt" id="quit">✕ Termina</button><button class="btn hide" id="next">Avanti →</button></div></div>
+   <p class="note kbd">Scorciatoie: tasti 1-4 per rispondere, Invio per proseguire.</p></div>`;
+  const box=$("#opts");
+  opts.forEach((o,k)=>{const b=document.createElement("button");b.className="opt";b.innerHTML=`<span class="k">${"ABCD"[k]}</span><span>${esc(o.t)}</span>`;b.onclick=()=>answer(k);box.appendChild(b)});
+  let done=false;
+  function answer(k){if(done)return;done=true;
+    const bs=box.querySelectorAll(".opt");bs.forEach((b,j)=>{b.disabled=true;if(opts[j].ok)b.classList.add("right")});
+    const ok=!!opts[k].ok;if(!ok)bs[k].classList.add("wrong");
+    const r=S.quiz[qi]||{c:0,w:0,last:0};ok?r.c++:r.w++;r.last=ok?1:0;r.t=Date.now();S.quiz[qi]=r;S.log.push([Date.now(),"q",ok?1:0]);if(S.log.length>2000)S.log=S.log.slice(-2000);save();
+    if(ok)z.ok++;else z.wrong.push(qi);
+    $("#fb").innerHTML=`<div class="fb ${ok?"ok":"ko"}"><b>${ok?"✅ Esatto!":"❌ Non è corretto."}</b> ${ok?"":"Risposta giusta: <b>"+esc(q[2])+"</b>.<br>"}${esc(q[4])}<br>${refTag(q[5])}</div>`;
+    $("#next").classList.remove("hide");$("#next").focus();}
+  $("#next").onclick=()=>{z.i++;renderQ()};
+  $("#quit").onclick=()=>{z.ids=z.ids.slice(0,z.i+(done?1:0));endQuiz()};
+  document.onkeydown=e=>{if(!$("#opts"))return;if(!done&&/^[1-4]$/.test(e.key)){answer(+e.key-1)}else if(done&&e.key==="Enter"){e.preventDefault();z.i++;renderQ()}};
+}
+function endQuiz(){
+  document.onkeydown=null;const z=QZ,m=$("#main");const n=z.ids.length,p=n?Math.round(z.ok/n*100):0;
+  const msg=p>=90?"Eccellente! 🏆":p>=70?"Molto bene! 💪":p>=50?"Buon lavoro, ripassa gli errori 📚":"Ripassiamo insieme: guarda le spiegazioni 🔁";
+  m.innerHTML=`<div class="qbox"><div class="hero"><div style="z-index:1"><h1>${p}% · ${z.ok}/${n}</h1><p>${msg}</p></div></div>
+   <div class="row" style="margin:18px 0"><button class="btn" id="again">Nuovo quiz</button>${z.wrong.length?'<button class="btn alt" id="redo">↺ Rifai le sbagliate</button>':""}<button class="btn alt" id="home">Home</button></div>
+   ${z.wrong.length?"<h2>Da ripassare</h2>":""}<div id="wl"></div></div>`;
+  $("#wl").innerHTML=z.wrong.map(i=>{const q=QUIZ[i];return `<div class="card" style="margin-bottom:12px"><span class="tag" style="--c:${TBY[q[0]].color}">${esc(TBY[q[0]].name)}</span> ${q[6]?approfTag:""}<p style="font-weight:650;margin:10px 0 6px">${esc(q[1])}</p><p style="margin:0">✅ ${esc(q[2])}</p><p class="note" style="margin:6px 0 0">${esc(q[4])}</p>${refTag(q[5])}</div>`}).join("");
+  $("#again").onclick=()=>go("quiz");$("#home").onclick=()=>go("home");
+  if($("#redo"))$("#redo").onclick=()=>startQuiz(shuffle(z.wrong),"Rifai le sbagliate");
+}
+
+/* ---------- FLASHCARD ---------- */
+function vFlash(m){
+  const sel=new Set();let deck=[],cur=0,flipped=false,seen=0;
+  const build=()=>{deck=CARDS.map((_,i)=>i).filter(i=>!sel.size||sel.has(CARDS[i][0]));
+    deck=shuffle(deck).sort((a,b)=>((S.cards[a]||{}).box||0)-((S.cards[b]||{}).box||0));seen=0;};
+  const draw=()=>{
+    m.innerHTML=`<h1>Flashcard</h1><p class="sub">Tocca la carta per girarla, poi indica se la sapevi. Le carte che non sai tornano presto; quelle che sai salgono di livello (ripetizione dilazionata, 5 livelli).</p><div id="cb"></div><div id="fcarea"></div>`;
+    $("#cb").appendChild(chipBar(sel,()=>{build();draw()}));show();
+  };
+  const show=()=>{const a=$("#fcarea");
+    if(!deck.length){a.innerHTML=`<div class="card" style="text-align:center;max-width:640px;margin:0 auto"><h2>🎉 Mazzo completato!</h2><p>Hai ripassato ${seen} carte.</p><button class="btn" id="re">Ricomincia</button></div>`;$("#re").onclick=()=>{build();show()};return}
+    const ci=deck[0],c=CARDS[ci],t=TBY[c[0]],box=(S.cards[ci]||{}).box||0;flipped=false;
+    const dots=k=>`<span class="boxes">${[1,2,3,4,5].map(i=>`<i class="${i<=k?"f":""}"></i>`).join("")}</span>`;
+    const known=CARDS.filter((x,i)=>(!sel.size||sel.has(x[0]))&&((S.cards[i]||{}).box||0)>=3).length;
+    a.innerHTML=`<div class="fcwrap" style="--c:${t.color}"><div class="row" style="justify-content:space-between;margin-bottom:10px"><span class="note">Nel mazzo: ${deck.length} · Ripassate: ${seen}</span><span class="note">Consolidate (liv. ≥3): ${known}</span></div>
+     <div class="fc" id="fc"><div class="face front"><div class="top"><span>${esc(t.name)}</span>${dots(box)}</div><div class="t">${esc(c[1])}</div>${c[4]?'<div style="margin-top:12px"><span class="approf">approfondimento, non nelle slide</span></div>':""}<div class="hint">tocca per girare · spazio</div></div>
+     <div class="face back"><div class="top"><span class="note">${esc(t.name)}</span>${dots(box)}</div><div>${esc(c[2])}</div><div>${refTag(c[3])}</div></div></div>
+     <div class="fcbtns"><button class="btn ko big" id="no" disabled>✗ Non lo so</button><button class="btn ok big" id="si" disabled>✓ Lo so</button></div></div>`;
+    const fc=$("#fc");const flip=()=>{flipped=!flipped;fc.classList.toggle("flip",flipped);$("#no").disabled=$("#si").disabled=false};
+    fc.onclick=flip;
+    const rate=k=>{const r=S.cards[ci]||{box:0};
+      if(k){r.box=Math.min(5,(r.box||1)+1);deck.shift()}else{r.box=1;deck.shift();deck.splice(Math.min(3,deck.length),0,ci)}
+      r.t=Date.now();S.cards[ci]=r;S.log.push([Date.now(),"c",k]);save();seen++;show()};
+    $("#no").onclick=()=>rate(0);$("#si").onclick=()=>rate(1);
+    document.onkeydown=e=>{if(!$("#fc"))return;if(e.key===" "){e.preventDefault();flip()}else if(flipped&&(e.key==="ArrowRight"||e.key==="2"))rate(1);else if(flipped&&(e.key==="ArrowLeft"||e.key==="1"))rate(0)};
+  };
+  build();draw();
+}
+
+/* ---------- TIMELINE ---------- */
+function vTimeline(m){
+  m.innerHTML=`<h1>Linea del tempo</h1><p class="sub">Leggi e classificazioni in ordine cronologico. Tocca un evento per i dettagli.</p><div class="row" style="margin-bottom:14px"><button class="btn alt" id="exp">Espandi tutto</button></div><div class="tl" id="tl"></div>`;
+  const tl=$("#tl");
+  TIMELINE.forEach(e=>{const t=TBY[e[3]];const d=document.createElement("div");d.className="ev";d.style.setProperty("--c",t.color);
+    d.innerHTML=`<span class="dot"></span><div class="in"><div class="row" style="justify-content:space-between"><span class="yr">${e[0]}</span><span class="tag" style="--c:${t.color}">${esc(t.short)}</span></div><div class="ti">${esc(e[1])}</div><div class="det">${esc(e[2])}<br>${refTag(e[4])}${e[5]?" "+approfTag:""}</div></div>`;
+    d.onclick=()=>d.classList.toggle("open");tl.appendChild(d)});
+  let all=false;$("#exp").onclick=()=>{all=!all;tl.querySelectorAll(".ev").forEach(x=>x.classList.toggle("open",all));$("#exp").textContent=all?"Comprimi tutto":"Espandi tutto"};
+}
+
+/* ---------- MAPPE ---------- */
+const pad=n=>String(n).padStart(2,"0");
+function vMappe(m){
+  m.innerHTML=`<h1>Mappe concettuali</h1><p class="sub">21 mappe costruite sulle slide. Tocca una mappa per aprirla: zoom con rotellina, pinch o pulsanti; trascina per spostarti; frecce per cambiare mappa.</p><div class="mgrid" id="mg"></div>`;
+  const g=$("#mg");
+  MAPS.forEach((t,i)=>{const b=document.createElement("button");b.className="mthumb";
+    const tp=MAPTOPIC[i]?TBY[MAPTOPIC[i]]:null;
+    b.innerHTML=`<img loading="lazy" src="img/thumb/mappa-${pad(i+1)}.jpg" alt="Mappa ${i+1}"><div>${i+1}. ${esc(t)}<small>${tp?esc(tp.name):"Visione d’insieme"}</small></div>`;
+    b.onclick=()=>openLB(i);g.appendChild(b)});
+}
+let LB={i:0,s:1,x:0,y:0};
+function openLB(i){LB.i=i;$("#lb").classList.add("on");loadLB()}
+function loadLB(){const img=$("#lbimg");$("#lbt").textContent=`${LB.i+1}/${MAPS.length} · ${MAPS[LB.i]}`;
+  img.onload=fitLB;img.src=`img/mappa-${pad(LB.i+1)}.jpg`;if(img.complete&&img.naturalWidth)fitLB()}
+function fitLB(){const v=$("#lbview"),img=$("#lbimg");const s=Math.min(v.clientWidth/img.naturalWidth,v.clientHeight/img.naturalHeight);LB.s=s;LB.fit=s;LB.x=(v.clientWidth-img.naturalWidth*s)/2;LB.y=(v.clientHeight-img.naturalHeight*s)/2;applyLB()}
+function applyLB(){$("#lbimg").style.transform=`translate(${LB.x}px,${LB.y}px) scale(${LB.s})`}
+function zoomLB(f,cx,cy){const v=$("#lbview");if(cx===undefined){cx=v.clientWidth/2;cy=v.clientHeight/2}
+  const ns=Math.max(LB.fit*0.8,Math.min(LB.fit*8,LB.s*f));LB.x=cx-(cx-LB.x)*ns/LB.s;LB.y=cy-(cy-LB.y)*ns/LB.s;LB.s=ns;applyLB()}
+function initLB(){
+  const v=$("#lbview");let drag=null;const pts=new Map();let pinch=null;
+  v.addEventListener("wheel",e=>{e.preventDefault();const r=v.getBoundingClientRect();zoomLB(e.deltaY<0?1.15:1/1.15,e.clientX-r.left,e.clientY-r.top)},{passive:false});
+  v.addEventListener("pointerdown",e=>{v.setPointerCapture(e.pointerId);pts.set(e.pointerId,[e.clientX,e.clientY]);if(pts.size===1){drag=[e.clientX-LB.x,e.clientY-LB.y];v.classList.add("drag")}else if(pts.size===2){const p=[...pts.values()];pinch=Math.hypot(p[0][0]-p[1][0],p[0][1]-p[1][1])}});
+  v.addEventListener("pointermove",e=>{if(!pts.has(e.pointerId))return;pts.set(e.pointerId,[e.clientX,e.clientY]);
+    if(pts.size===2&&pinch){const p=[...pts.values()],d=Math.hypot(p[0][0]-p[1][0],p[0][1]-p[1][1]),r=v.getBoundingClientRect();zoomLB(d/pinch,(p[0][0]+p[1][0])/2-r.left,(p[0][1]+p[1][1])/2-r.top);pinch=d}
+    else if(drag){LB.x=e.clientX-drag[0];LB.y=e.clientY-drag[1];applyLB()}});
+  const up=e=>{pts.delete(e.pointerId);if(pts.size<2)pinch=null;if(!pts.size){drag=null;v.classList.remove("drag")}};
+  v.addEventListener("pointerup",up);v.addEventListener("pointercancel",up);
+  v.addEventListener("dblclick",e=>{const r=v.getBoundingClientRect();if(LB.s>LB.fit*1.5)fitLB();else zoomLB(2.5,e.clientX-r.left,e.clientY-r.top)});
+  $("#lbin").onclick=()=>zoomLB(1.3);$("#lbout").onclick=()=>zoomLB(1/1.3);$("#lbfit").onclick=fitLB;
+  $("#lbprev").onclick=()=>{LB.i=(LB.i+MAPS.length-1)%MAPS.length;loadLB()};$("#lbnext").onclick=()=>{LB.i=(LB.i+1)%MAPS.length;loadLB()};
+  $("#lbx").onclick=()=>$("#lb").classList.remove("on");
+  window.addEventListener("resize",()=>{if($("#lb").classList.contains("on"))fitLB()});
+  document.addEventListener("keydown",e=>{if(!$("#lb").classList.contains("on"))return;if(e.key==="Escape")$("#lbx").click();if(e.key==="ArrowRight")$("#lbnext").click();if(e.key==="ArrowLeft")$("#lbprev").click();if(e.key==="+")zoomLB(1.3);if(e.key==="-")zoomLB(1/1.3)});
+}
+
+/* ---------- ORALE ---------- */
+const DUR=180;let T={left:DUR,run:false};
+function stopTimer(){clearInterval(timerId);timerId=null;T.run=false}
+function beep(){try{const a=new (window.AudioContext||window.webkitAudioContext)();[0,.35,.7].forEach(t=>{const o=a.createOscillator(),g=a.createGain();o.frequency.value=880;o.connect(g);g.connect(a.destination);g.gain.setValueAtTime(.2,a.currentTime+t);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+t+.3);o.start(a.currentTime+t);o.stop(a.currentTime+t+.3)})}catch(e){}}
+function vOrale(m){
+  const sel=new Set();let cur=null;
+  const pick=()=>{const ids=OPEN.map((_,i)=>i).filter(i=>!sel.size||sel.has(OPEN[i][0]));
+    const sc=i=>{const r=S.oral[i];return r&&r.length?r[r.length-1]+r.length*0.3:0};
+    const cand=shuffle(ids).sort((a,b)=>sc(a)-sc(b));cur=cand[Math.floor(Math.random()*Math.min(4,cand.length))];};
+  const draw=()=>{
+    m.innerHTML=`<div class="oral"><h1>Simulazione orale</h1><p class="sub">Domande aperte probabili tratte dai riassunti. Rispondi ad alta voce in 3 minuti, poi confronta con la risposta modello e valutati da 1 a 5.</p><div id="cb"></div><div id="oa"></div></div>`;
+    $("#cb").appendChild(chipBar(sel,()=>{pick();draw()}));show();
+  };
+  const show=()=>{stopTimer();T.left=DUR;const o=OPEN[cur],t=TBY[o[0]];const prev=S.oral[cur]||[];
+    const C=2*Math.PI*52;
+    $("#oa").innerHTML=`<div class="card"><div class="row" style="justify-content:space-between"><span class="tag" style="--c:${t.color}">${esc(t.name)}</span><span class="note">${prev.length?"Già provata "+prev.length+"× · ultimo voto "+prev[prev.length-1]+"/5":"Mai provata"}</span></div>
+     <div class="oq">«${esc(o[1])}»</div>
+     <div class="timer"><div class="tclock" id="tc"><svg width="120" height="120"><circle cx="60" cy="60" r="52" stroke="#eceef6" stroke-width="10" fill="none"/><circle id="tcc" cx="60" cy="60" r="52" stroke="url(#gr)" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="0"/><defs><linearGradient id="gr"><stop offset="0" stop-color="#5b5fe0"/><stop offset="1" stop-color="#c2389e"/></linearGradient></defs></svg><div class="v" id="tv">3:00</div></div>
+      <div class="row"><button class="btn big" id="ts">▶ Avvia timer</button><button class="btn alt" id="tr">↺</button></div></div>
+     <div class="row" style="margin-top:18px"><button class="btn alt big" id="show">👁 Mostra risposta modello</button><button class="btn alt" id="nx">Prossima domanda →</button></div><div id="mod"></div></div>`;
+    const upd=()=>{$("#tv").textContent=`${Math.floor(T.left/60)}:${String(T.left%60).padStart(2,"0")}`;$("#tcc").setAttribute("stroke-dashoffset",C*(1-T.left/DUR));$("#tc").classList.toggle("end",T.left===0)};
+    $("#ts").onclick=()=>{if(T.run){stopTimer();$("#ts").textContent="▶ Riprendi";return}if(T.left===0)T.left=DUR;T.run=true;$("#ts").textContent="⏸ Pausa";
+      timerId=setInterval(()=>{if(!$("#tv")){stopTimer();return}T.left--;upd();if(T.left<=0){stopTimer();beep();$("#ts").textContent="▶ Riavvia";toast("⏰ Tempo scaduto!")}},1000)};
+    $("#tr").onclick=()=>{stopTimer();T.left=DUR;upd();$("#ts").textContent="▶ Avvia timer"};
+    $("#nx").onclick=()=>{pick();show()};
+    $("#show").onclick=()=>{stopTimer();$("#ts").textContent="▶ Riprendi";
+      $("#mod").innerHTML=`<div class="model"><b>Risposta modello</b><p style="margin:8px 0">${esc(o[2])}</p>${refTag(o[3])}
+       <p style="margin:16px 0 4px;font-weight:650">Come è andata? Autovalutati:</p><div class="rate" id="rt">${[1,2,3,4,5].map(k=>`<button data-k="${k}" title="${["","Non la sapevo","Molto incompleta","Sufficiente","Buona","Completa e sicura"][k]}">${k}</button>`).join("")}</div><p class="note">1 = non la sapevo · 3 = sufficiente · 5 = completa e sicura</p></div>`;
+      $("#show").disabled=true;
+      $("#rt").querySelectorAll("button").forEach(b=>b.onclick=()=>{const k=+b.dataset.k;(S.oral[cur]=S.oral[cur]||[]).push(k);S.log.push([Date.now(),"o",k]);save();
+        $("#rt").querySelectorAll("button").forEach(x=>{x.classList.toggle("on",x===b);x.disabled=true});toast(k>=4?"Ottimo! 💪":k>=3?"Bene, ancora un ripasso 📚":"La riproporrò presto 🔁")})};
+  };
+  pick();draw();
+}
+
+/* ---------- STATS ---------- */
+function vStats(m){
+  const st=allStats();const qa=Object.values(S.quiz);const totC=qa.reduce((a,r)=>a+r.c,0),totW=qa.reduce((a,r)=>a+r.w,0);
+  const known=Object.values(S.cards).filter(r=>r.box>=3).length;const ors=Object.values(S.oral).map(r=>r[r.length-1]);
+  const pct=x=>x===null?"—":Math.round(x*100)+"%";
+  m.innerHTML=`<h1>Statistiche</h1><p class="sub">I progressi sono salvati solo in questo browser (localStorage).</p>
+   <div class="grid g4"><div class="card kpi"><b>${qa.length}/${QUIZ.length}</b><span>domande viste</span></div><div class="card kpi"><b>${totC+totW?Math.round(totC/(totC+totW)*100):0}%</b><span>accuratezza quiz (${totC+totW} risposte)</span></div>
+   <div class="card kpi"><b>${known}/${CARDS.length}</b><span>flashcard consolidate</span></div><div class="card kpi"><b>${ors.length?(ors.reduce((a,b)=>a+b,0)/ors.length).toFixed(1):"—"}</b><span>media orale (${ors.length}/${OPEN.length} domande)</span></div></div>
+   <div class="grid g2" style="margin-top:18px"><div class="card"><h2>🎯 Argomenti più deboli</h2><div id="wk"></div><button class="btn" style="margin-top:14px" id="wb">Ripassa i punti deboli</button></div>
+   <div class="card"><h2>❌ Domande sbagliate più spesso</h2><div id="mw"></div></div></div>
+   <div class="card" style="margin-top:18px;overflow-x:auto"><h2>Dettaglio per argomento</h2><table><thead><tr><th>Argomento</th><th>Progresso</th><th>Quiz visti</th><th>Accuratezza</th><th>Card ≥ liv.3</th><th>Orale</th></tr></thead><tbody id="tb"></tbody></table></div>
+   <div class="card" style="margin-top:18px"><h2>Backup dei progressi</h2><p class="note">Utile per passare i progressi su un altro computer o browser.</p><div class="row"><button class="btn alt" id="ex">⬇ Esporta</button><label class="btn alt">⬆ Importa<input type="file" id="im" accept=".json" class="hide"></label><button class="btn ko" id="rs">Azzera tutto</button></div></div>`;
+  const ws=weakTopics(4);
+  $("#wk").innerHTML=(qa.length||ors.length)?ws.map(s=>{const t=TBY[s.id];return `<div class="weak"><span class="tag" style="--c:${t.color}">${s.progress}%</span><div style="flex:1"><b style="font-size:14px">${esc(t.name)}</b><div class="note">quiz ${pct(s.acc)} · orale ${s.oralAvg===null?"—":s.oralAvg.toFixed(1)+"/5"}</div></div><button class="btn alt" data-t="${s.id}">Quiz</button></div>`}).join(""):'<p class="note">Fai qualche quiz o simulazione per vedere qui i tuoi punti deboli.</p>';
+  $("#wk").querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>go("quiz",{topics:[b.dataset.t],autostart:true}));
+  const mw=QUIZ.map((q,i)=>[i,S.quiz[i]]).filter(([,r])=>r&&r.w).sort((a,b)=>b[1].w-a[1].w).slice(0,6);
+  $("#mw").innerHTML=mw.length?mw.map(([i,r])=>`<div class="weak"><span class="tag" style="--c:var(--ko)">${r.w}×</span><div style="flex:1;font-size:14px">${esc(QUIZ[i][1])}<div class="note">✅ ${esc(QUIZ[i][2])}</div></div></div>`).join(""):'<p class="note">Nessun errore registrato finora.</p>';
+  $("#tb").innerHTML=st.map(s=>{const t=TBY[s.id];return `<tr><td><span class="tag" style="--c:${t.color}">${SRCN[t.src]}</span> ${esc(t.name)}</td><td style="min-width:120px"><div class="bar" style="--c:${t.color}"><i style="width:${s.progress}%"></i></div><span class="note">${s.progress}%</span></td><td>${s.ans}/${s.nq}</td><td>${pct(s.acc)}</td><td>${s.known}/${s.nc}</td><td>${s.oralAvg===null?"—":s.oralAvg.toFixed(1)+"/5"} <span class="note">(${s.odone}/${s.no})</span></td></tr>`}).join("");
+  $("#wb").onclick=()=>go("quiz",{weak:true});
+  $("#ex").onclick=()=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(S)],{type:"application/json"}));a.download="progressi_perciavalle.json";a.click()};
+  $("#im").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!d.quiz)throw 0;S=d;S.log=S.log||[];save();toast("Progressi importati ✅");go("stats")}catch(x){toast("File non valido")}};r.readAsText(f)};
+  $("#rs").onclick=()=>{if(confirm("Vuoi davvero azzerare tutti i progressi salvati in questo browser?")){S={quiz:{},cards:{},oral:{},log:[]};save();go("stats")}};
+}
+
+/* ---------- init ---------- */
+document.querySelectorAll(".nav").forEach(b=>b.onclick=()=>go(b.dataset.v));
+initLB();
+window.addEventListener("hashchange",()=>{const v=location.hash.slice(1);if(VIEWS.includes(v))go(v)});
+go(location.hash.slice(1)||"home");
+
+</script></body></html>
